@@ -1,26 +1,25 @@
-// NOTE: WIP
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Image } from 'react-native';
 
 // Views
-import HomeView from './views/Home';
-import BioView from './views/Bio';
-import MapView from './views/map/Map';
-import ARView from './views/ar/AR';
+import HomeView from './Home';
+import BioView from './Bio';
+import MapView from './map/Map';
+import ARView from './ar/AR';
 
-// View names
-const homeName = "Página Principal";
-const bioName = "Biografia";
-const mapName = "Mapa Interativo";
-const arName = "Realidade Aumentada";
+// View Names
+const homeName = "Home";
+const bioName = "Bio";
+const mapName = "Map";
+const arName = "AR";
 
 // View Icons
-import HomeIcon from './data/img/navbar/nav_homeIcon';
-import BioIcon from './data/img/navbar/nav_bioIcon';
-import MapIcon from './data/img/navbar/nav_mapIcon';
-import ARIcon from './data/img/navbar/nav_arIcon';
-
+import HomeIcon from '../data/img/navbar/nav_homeIcon.svg';
+import BioIcon from '../data/img/navbar/nav_bioIcon.svg';
+import MapIcon from '../data/img/navbar/nav_mapIcon.svg';
+import ARIcon from '../data/img/navbar/nav_arIcon.svg';
 const Tab = createBottomTabNavigator();
 
 function NavBar() {
@@ -35,14 +34,14 @@ function NavBar() {
             
             // TODO: Voltar aqui mais tarde para mudar o icon que está selecionado
             switch(rn){
-              case 'homeName': iconName = focused ? HomeIcon : HomeIcon; break;
-              case 'bioName': iconName = focused ? BioIcon : BioIcon; break;
-              case 'mapName': iconName = focused ? MapIcon : MapIcon; break;
-              case 'arName': iconName = focused ? ARIcon : ARIcon; break;
+              case homeName: iconName = focused ? HomeIcon : HomeIcon; break;
+              case bioName: iconName = focused ? BioIcon : BioIcon; break;
+              case mapName: iconName = focused ? MapIcon : MapIcon; break;
+              case arName: iconName = focused ? ARIcon : ARIcon; break;
             }
 
-            // You can return any component that you like here!
-            return <Icon name={iconName} size={size} color={color} />;
+            // NOTE: Imagem ainda não funciona
+            return <Image source={require(iconName)}></Image>;
           },
         })}
         tabBarOptions={{
