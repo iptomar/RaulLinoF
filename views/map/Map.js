@@ -3,10 +3,8 @@ import { View, Text } from 'react-native';
 
 export default function Map({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text
-                onPress={() => alert('This is the "Map" screen.')}
-                style={{ fontSize: 26, fontWeight: 'bold' }}>Map Screen</Text>
-        </View>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{color:"red"}}>Map</Text>
+    </View>
     );
 }
