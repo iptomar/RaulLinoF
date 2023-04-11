@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, ImageBackground } from 'react-native';
+import { View, Pressable, ImageBackground } from 'react-native';
 
 export default function HomeScreen({ navigation }) {
     return (
@@ -8,9 +8,13 @@ export default function HomeScreen({ navigation }) {
              style={{height:'100%', width:'100%'}}
              resizeMode='cover'
              source={require('../data/img/views/home/abrantes2.png')}>
-                <Text style = {{fontSize: 26, fontFamily: "Fira Sans", }}>
-                    Teste
-                </Text>
+                {/*
+                <Pressable 
+                    onPress= ""
+                    title = "Explorar"
+                    style = {{fontSize: 26, fontFamily: "Fira Sans", position: 'absolute', left: '40%', top:'50%', opacity: 100 }}>
+                </Pressable>
+                */}
             </ImageBackground>
         </View>
         
