@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Home from './views/Home';
+import NavBar from './views/NavBar';
 
 function App() {
   return (
-    <Home navigation={undefined}/>
+    <NavBar/>
   );
 }
 
