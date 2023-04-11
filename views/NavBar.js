@@ -39,7 +39,7 @@ export default function NavBar() {
       }}
       >
         <Tab.Screen 
-        name="Home" 
+        name="Raul Lino" 
         component={HomeView} 
         options={{
           tabBarIcon: ({focused}) => (
@@ -48,7 +48,7 @@ export default function NavBar() {
         }}
         />
         <Tab.Screen 
-        name="Bio" 
+        name="Biografia" 
         component={BioView} 
         options={{
           tabBarIcon: ({focused}) => (
@@ -65,7 +65,7 @@ export default function NavBar() {
           )
         }}
         />
-        <Tab.Screen name="RA"
+        <Tab.Screen name="Realidade Aumentada"
         component={ARView} 
         options={{
           tabBarIcon: ({focused}) => (
