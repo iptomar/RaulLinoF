@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Home from './views/Home';
+import AR from './views/ar/AR';
 
 function App() {
   return (
-    <Home navigation={undefined}/>
+    <AR navigation={undefined} />
   );
 }
 
