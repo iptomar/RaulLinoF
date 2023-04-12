@@ -45,6 +45,7 @@ export default function NavBar() {
           tabBarIcon: ({focused}) => (
             <HomeIcon width="50" height="50" color="#00ff00"/>
           )
+
         }}
         />
         <Tab.Screen 
