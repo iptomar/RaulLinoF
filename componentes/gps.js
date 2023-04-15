@@ -18,28 +18,25 @@ export default function  (){
 
             },
             {
-                /// precisao do GPS com tru fica mais lento, caso ano queiramos  ser , tao preciso colocar false  
+                /// precisao do GPS com true fica mais lento, caso nao queiramos sertao precisos colocar false  
                 enableHighAccuracy:true,
                 timeout:120000,
                 maximumAge:1000,        
             }
-
         )
-    }
-
-    
+    }    
     return(
         <View>
-           <Text>Localização</Text>     
+           <Text></Text>     
            <TouchableHighlight
+                activeOpacity={0.6}
+                underlayColor="#DDDDDD"
                 onPress={obterLocal}
            >
-                <Text>Localizar </Text>
+                <Text>Click para Obter a localizacao  Localizar </Text>
             </TouchableHighlight> 
             <Text>Latitude:{lat} </Text>
             <Text>Longitude:{long} </Text>
-
-
         </View>
         
     );
