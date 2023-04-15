@@ -1,6 +1,6 @@
 import * as React from 'react';
 import NavBar from './views/NavBar';
-import gps from './src/gps';
+import gps from './componentes/gps';
 
 
 
