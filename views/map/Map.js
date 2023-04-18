@@ -46,6 +46,11 @@ export default function Map({ navigation }) {
                 // TODO: Converter SVGs em PNGs manualmente ou por uma biblioteca
                 //icon={require={markerIcon}}
             />
+            <Marker 
+                coordinate2={test={latitude: 39.461152, longitude: -8.300800}}
+                title2={"Ponto de teste"}
+                description2={"Ponto de teste"}
+            />
         </MapView>
     );
 }
