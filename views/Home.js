@@ -1,10 +1,11 @@
-import * as React from 'react';
-import { Image, View, Text, ScrollView, StyleSheet, FlatList } from 'react-native';
+import React from 'react';
+import { Image, View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const dados = require('../data/json/itinerarios.json');
-// import Dados from '../data/json/itinerarios_test';
-import Test from '../data/img/itinerario/2/it_021.jpg';
-const Test2 = dados.dados[0].imgs[0];
+//data from json
+import dados from '../data/json/itinerarios.json';
+import dados2 from './itinerarios';
+import { project } from '../react-native.config';
 
 //css
 const styles = StyleSheet.create({
@@ -43,24 +44,32 @@ const styles = StyleSheet.create({
   });
 
 export default function Home() {
+    const navigation = useNavigation();
+
+    function navigateToDetails(id) {
+    navigation.navigate('Details', { itemId: id });
+    }
+    
     return (
         <View style={styles.container}>
             <ScrollView>
                 <View style={styles.header}>
                 <Text style={styles.title}>O INÍCIO</Text>
                 </View>              
-                <FlatList 
-                    data={dados.dados}
-                    renderItem={({ item }) => (
+                {dados2.map((item) => {
+                return(
                     <View style={styles.content}>
-                        <Image style={styles.image} source={Test}/>
-                        <Text style={styles.description}>{item.year}{'\n'}{item.title}{'\n'}{item.address}
-                        {'\n'}{item.imgs[0]}</Text>
+                        {/* <Image style={styles.image} source={require('../data/img/itinerario/1/it_011.jpg')} /> */}
+                        <Image style={styles.image} source={item.imgs[0]} /> 
+                        <Text style={styles.description}>{item.id}{'\n'}{item.year}{'\n'}{item.address}</Text>
                     </View>
-                    )}
-                    keyExtractor={(item) => item.id.toString()}
-                    />
+                );
+                })}  
             </ScrollView>
         </View>
     );
 }
+
+
+
+
