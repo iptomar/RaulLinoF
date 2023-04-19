@@ -35,13 +35,14 @@ function loadItinerarios(){
 export default function Map({ navigation }) {
     return (
         <MapView
-            style={{height:"100%"}}
+            style={{flex:1}}
             initialRegion={getInitialState()}>
             <Marker
                 // ^ Marker de Teste
-                coordinate={test={latitude: 39.461152, longitude: -8.199535}}
+                coordinate={{latitude: 39.461152, longitude: -8.199535}}
                 title={"Rua Luís de Camões"}
                 description={"Rua Luís de Camões, nº 28"}
+                anchor={{ x: 0.5, y: 0.5 }}
                 // NOTA: Icons/images não aceitam svgs :')
                 // TODO: Converter SVGs em PNGs manualmente ou por uma biblioteca
                 //icon={require={markerIcon}}
