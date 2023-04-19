@@ -22,10 +22,9 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     content: {
-        maxWidth: '100%',
+        width: '100%',
         flexDirection: 'row',
-        alignItems: 'stretch',
-        justifyContent: 'space-around',
+        justifyContent: 'flex-start',
         paddingHorizontal: 15,
     },
     image: {
@@ -33,6 +32,7 @@ const styles = StyleSheet.create({
         height: 120,
         borderRadius: 10,
         marginBottom: 20,
+        marginRight: 20,
     },
     description: {
         maxWidth: '60%',
@@ -61,7 +61,7 @@ export default function Home() {
                     <View style={styles.content}>
                         {/* <Image style={styles.image} source={require('../data/img/itinerario/1/it_011.jpg')} /> */}
                         <Image style={styles.image} source={item.imgs[0]} /> 
-                        <Text style={styles.description}>{item.id}{'\n'}{item.year}{'\n'}{item.address}</Text>
+                        <Text style={styles.description}>{item.year}{'\n'}{item.title}{'\n'}{item.typology}</Text>
                     </View>
                 );
                 })}  

@@ -190,8 +190,8 @@ export const dados = [
             "typology": "Habitação Unifamiliar",
             "info": "O projeto de Raul Lino teve como ponto de partida um edifício existente de dois pisos (rés do chão +1) no centro histórico de Abrantes, ao qual foi acrescido um piso. O piso térreo destinou-se a estabelecimento comercial, e os pisos superiores a habitação.",
             "imgs": [
-                require("../data/img/itinerario/12/it_121.jpg"),
-                require("../data/img/itinerario/12/it_122.jpg")
+                require("../data/img/itinerario/12/it_121.png"),
+                require("../data/img/itinerario/12/it_122.png")
             ]
         },
         {
@@ -221,8 +221,8 @@ export const dados = [
             "typology": "Habitação Unifamiliar",
             "info": "Neste projeto, Raul Lino é chamado a realizar um projeto de alterações num edifico existente de três pisos, com a fachada revestida a azulejos. O projeto consiste num conjunto de alterações no interior da habitação, com o intuito de adequar os espaços interiores e melhorar as suas condições de conforto. No exterior são acrescentadas três mansardas, duas sobre o logradouro, e a outra, no centro da fachada principal, sobre a rua.",
             "imgs": [
-                require("../data/img/itinerario/14/it_141.jpg"),
-                require("../data/img/itinerario/14/it_142.jpg")
+                require("../data/img/itinerario/14/it_141.png"),
+                require("../data/img/itinerario/14/it_142.png")
             ]
         },
         {
