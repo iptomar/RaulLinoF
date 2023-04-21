@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // Views
 import HomeView from './Home';
+import DetailsView from './Details';
 import BioView from './Bio';
 import MapView from './map/Map';
 import ARView from './ar/AR';
 
 // View Names
 const homeName = "Home";
+const detailsName = "Details";
 const bioName = "Bio";
 const mapName = "Map";
 const arName = "AR";
@@ -20,11 +22,30 @@ import BioIcon from '../data/img/navbar/nav_bioIcon.svg';
 import MapIcon from '../data/img/navbar/nav_mapIcon.svg';
 import ARIcon from '../data/img/navbar/nav_arIcon.svg';
 
+
+const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function NavBar() {
+export default function Navigation(){
   return(
     <NavigationContainer>
+      <NavBar />
+    </NavigationContainer>
+  );
+}
+
+const HomeStack = () => {
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name='Raul Lino' component={HomeView} />
+      <Stack.Screen name='Detalhes' component={DetailsView} />
+    </Stack.Navigator>
+  )
+}
+
+export function NavBar() {
+  return(
+    // <NavigationContainer>
       <Tab.Navigator
       screenOptions={{
         "tabBarShowLabel": false,
@@ -40,7 +61,7 @@ export default function NavBar() {
       >
         <Tab.Screen 
         name="Raul Lino" 
-        component={HomeView} 
+        component={HomeStack} 
         options={{
           tabBarIcon: ({focused}) => (
             <HomeIcon width="50" height="50" color="#00ff00"/>
@@ -75,6 +96,6 @@ export default function NavBar() {
         }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
+    // </NavigationContainer>
   )
 }

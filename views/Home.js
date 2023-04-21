@@ -1,11 +1,8 @@
-import React from 'react';
-import { Image, View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import * as React from 'react';
+import { Image, View, Text, ScrollView, StyleSheet, Button } from 'react-native';
 
 //data from json
-import dados from '../data/json/itinerarios.json';
-import dados2 from './itinerarios';
-import { project } from '../react-native.config';
+import dados from './itinerarios';
 
 //css
 const styles = StyleSheet.create({
@@ -27,6 +24,12 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         paddingHorizontal: 15,
     },
+    content2: {
+        width: '60%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        // paddingHorizontal: 5,
+    },
     image: {
         width: 120,
         height: 120,
@@ -35,7 +38,6 @@ const styles = StyleSheet.create({
         marginRight: 20,
     },
     description: {
-        maxWidth: '60%',
         fontSize: 16,
         textAlign: 'left',
         fontFamily: 'FiraSans-Regular',
@@ -43,26 +45,28 @@ const styles = StyleSheet.create({
     }
   });
 
-export default function Home() {
-    const navigation = useNavigation();
-
-    function navigateToDetails(id) {
-    navigation.navigate('Details', { itemId: id });
-    }
+export default function Home({navigation}) {
     
     return (
         <View style={styles.container}>
             <ScrollView>
                 <View style={styles.header}>
-                <Text style={styles.title}>O INÍCIO</Text>
+                    <Text style={styles.title}>O INÍCIO</Text>
                 </View>              
-                {dados2.map((item) => {
+                {/* loop to see each item on Home */}
+                {dados.map((item) => {
                 return(
                     <View style={styles.content}>
-                        {/* <Image style={styles.image} source={require('../data/img/itinerario/1/it_011.jpg')} /> */}
                         <Image style={styles.image} source={item.imgs[0]} /> 
-                        <Text style={styles.description}>{item.year}{'\n'}{item.title}{'\n'}{item.typology}</Text>
-                    </View>
+                            {/* each child should have unique "key" prop to give stable identity to React element */}
+                            <View style={styles.content2}>
+                            <Text style={styles.description} key={item.id}>{item.year}{'\n'}{item.title}{'\n'}{item.typology}</Text>
+                            <Button style={styles.image}
+                                title='Details'
+                                onPress={() => navigation.navigate('Detalhes', {itemID: item.id})}
+                            />
+                        </View>
+                    </View> 
                 );
                 })}  
             </ScrollView>
