@@ -64,13 +64,13 @@ export default function Bio({ navigation }) {
             <ScrollView>
                 <View style={styles.header}>
                     {/* <Text style={styles.title}>Raul Lino</Text> */}
-                    <Text style={styles.subtitle}>NOTA BIOGRÁFICA</Text>
+                    <Text style={styles.subtitle} selectable={true}>NOTA BIOGRÁFICA</Text>
                 </View>
                 <View style={styles.content}>
                     <Image source={RaulLinoImage} style={styles.image} />
-                    <Text style={styles.description}>Nome completo: Raul Lino da Silva{'\n'}Data de Nascimento: 21 de Novembro de 1879, Lisboa {'\n'}Data de Óbito: 13 de Julho de 1974 (94 anos), Lisboa</Text>
+                    <Text style={styles.description} selectable={true}>Nome completo: Raul Lino da Silva{'\n'}Data de Nascimento: 21 de Novembro de 1879, Lisboa {'\n'}Data de Óbito: 13 de Julho de 1974 (94 anos), Lisboa</Text>
                 </View>
-                <Text style={styles.about}>Foi uma personalidade única no que se refere ao panorama das artes em Portugal, muito devido ao facto de ter conseguido articular a tradição portuguesa com as inovadoras correntes europeias do início do século XX. Com 70 anos de atividade profisisonal, Lino é autor de mais de 700 obras. Também é importante referir que apesar do seu leque de projetos, também foi um homem de vasta obra teórica  e escrita, o que se tornou muito determinante para os seus seguidores ao longo dos anos em Portugal.</Text>
+                <Text style={styles.about} selectable={true}>Foi uma personalidade única no que se refere ao panorama das artes em Portugal, muito devido ao facto de ter conseguido articular a tradição portuguesa com as inovadoras correntes europeias do início do século XX. Com 70 anos de atividade profisisonal, Lino é autor de mais de 700 obras. Também é importante referir que apesar do seu leque de projetos, também foi um homem de vasta obra teórica  e escrita, o que se tornou muito determinante para os seus seguidores ao longo dos anos em Portugal.</Text>
             </ScrollView>
         </View>
       );

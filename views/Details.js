@@ -6,14 +6,14 @@ import dados from './itinerarios';
 
 //css
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
+    content: {
         flexDirection: 'row',
         flexWrap: 'wrap',
+        justifyContent: 'space-between',
     },
-    content: {
-        padding: 20,
+    contentImage: {
+        width: '50%',
+        padding: 10,
     },
     title: {
         fontSize: 20,
@@ -50,16 +50,18 @@ export default function Details({ navigation, route }) {
         {dados.map((item) => {
             if(item.id === itemID){
                 return(
-                    <View>
-                        <Text style={styles.title}>{item.title}</Text>
-                        {item.imgs.map((img)=>{
-                            return(
-                                <View>
-                                    <Image style={styles.image} source={img} /> 
-                                </View>
-                            );
-                        })}
-                        <Text style={styles.subtitle}>
+                    <View >
+                        <Text style={styles.title} selectable={true}>{item.title}</Text>
+                        <View style={styles.content}>
+                            {item.imgs.map((img, index)=>{
+                                return(
+                                    <View style={styles.contentImage} key={index}>
+                                        <Image style={styles.image} source={img} /> 
+                                    </View>
+                                );
+                            })}
+                        </View>
+                        <Text style={styles.subtitle} selectable={true}>
                             Ano: {item.year}{'\n'}
                             Topologia: {item.typology}{'\n'}
                             Endereço: {item.address}{'\n'}
@@ -67,10 +69,11 @@ export default function Details({ navigation, route }) {
                             Descrição:</Text>
                         <Text style={styles.description}>{item.info}</Text>
                     </View>
+                    
                 );
             }
             })} 
-            <Button title='Go Back' onPress={()=> navigation.navigate('Raul Lino')} />
+            <Button title='Go Back' onPress={()=> navigation.navigate('Locais')} color={'#078C6B'}/>
         </ScrollView>
       );
   

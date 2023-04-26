@@ -37,8 +37,8 @@ export default function Navigation(){
 const HomeStack = () => {
   return(
     <Stack.Navigator>
-      <Stack.Screen name='Raul Lino' component={HomeView} />
-      <Stack.Screen name='Detalhes' component={DetailsView} />
+      <Stack.Screen options={{headerShown: false}} name='Locais' component={HomeView} />
+      <Stack.Screen options={{headerShown: false}} name='Detalhes' component={DetailsView} />
     </Stack.Navigator>
   )
 }

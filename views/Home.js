@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         fontFamily: 'FiraSans-Regular',
         color: '#272133',
-    }
+    },
   });
 
 export default function Home({navigation}) {
@@ -51,7 +51,7 @@ export default function Home({navigation}) {
         <View style={styles.container}>
             <ScrollView>
                 <View style={styles.header}>
-                    <Text style={styles.title}>O INÍCIO</Text>
+                    <Text style={styles.title} selectable={true}>O INÍCIO</Text>
                 </View>              
                 {/* loop to see each item on Home */}
                 {dados.map((item) => {
@@ -60,9 +60,10 @@ export default function Home({navigation}) {
                         <Image style={styles.image} source={item.imgs[0]} /> 
                             {/* each child should have unique "key" prop to give stable identity to React element */}
                             <View style={styles.content2}>
-                            <Text style={styles.description} key={item.id}>{item.year}{'\n'}{item.title}{'\n'}{item.typology}</Text>
+                            <Text style={styles.description} selectable={true} key={item.id}>{item.year}{'\n'}{item.title}{'\n'}{item.typology}</Text>
                             <Button style={styles.image}
                                 title='Details'
+                                color={'#078C6B'}
                                 onPress={() => navigation.navigate('Detalhes', {itemID: item.id})}
                             />
                         </View>
