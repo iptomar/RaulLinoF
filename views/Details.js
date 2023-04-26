@@ -73,7 +73,7 @@ export default function Details({ navigation, route }) {
                 );
             }
             })} 
-            <Button title='Go Back' onPress={()=> navigation.navigate('Locais')} color={'#078C6B'}/>
+            <Button title='Voltar' onPress={()=> navigation.navigate('Locais')} color={'#078C6B'}/>
         </ScrollView>
       );
   

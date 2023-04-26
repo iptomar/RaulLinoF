@@ -62,7 +62,7 @@ export default function Home({navigation}) {
                             <View style={styles.content2}>
                             <Text style={styles.description} selectable={true} key={item.id}>{item.year}{'\n'}{item.title}{'\n'}{item.typology}</Text>
                             <Button style={styles.image}
-                                title='Details'
+                                title='Detalhes'
                                 color={'#078C6B'}
                                 onPress={() => navigation.navigate('Detalhes', {itemID: item.id})}
                             />
