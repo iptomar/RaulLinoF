@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, Text,useEffect, useState, PermissionsAndroid } from 'react-native';
-import {requestForegroundPermissionsAsync} from 'expo-location';
+// import {requestForegroundPermissionsAsync} from 'expo-location';
+import { ImagePropTypes, TextPropTypes } from 'deprecated-react-native-prop-types';
 
 
 import MapView, {Marker} from '@mvits/react-native-maps-osmdroid';
@@ -53,6 +54,8 @@ function loadItinerarios(){
        console.log(location.coords.longitude, location.coords.latitude);
 
  }
+
+ // Ruben penso que o probelma esta aqui pois se tiver isto comentado  nao me da erro  
  ///   useEffect(() => {
    ///     userLocation();
    ///   },[])
