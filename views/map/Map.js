@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text,useEffect, useState, PermissionsAndroid } from 'react-native';
+import {requestForegroundPermissionsAsync} from 'expo-location';
+
 
 import MapView, {Marker} from '@mvits/react-native-maps-osmdroid';
 import itinerarios from '../../data/json/itinerarios.json';
@@ -32,8 +34,49 @@ function loadItinerarios(){
     }
 }
 
+ /////   Joao Localiçao 
+ const userLocation = async() =>{
+    let {status} = await location.requestForegroundPermissionsAsync();
+     if (status !== 'granted'){
+            Error('acesso negado');
+            return;
+
+   }
+   let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
+        setMapRegion ({
+		latitude: location.coords.latitude,
+         longitude:location.coords.longitude,
+		 latitudeDelta: 0.0922,
+		 longitudeDelta: 0.0421,
+
+       });
+       console.log(location.coords.longitude, location.coords.latitude);
+
+ }
+ ///   useEffect(() => {
+   ///     userLocation();
+   ///   },[])
+
+
+/////////   ate qui joao 
+
+
+
+
 export default function Map({ navigation }) {
+
+    // async function requestLocationPermissions(){
+    //  const {granted} = await  requestLocationPermissions();
+
+
+
+    // }
+
+
+
+
     return (
+        
         <MapView
             style={{flex:1}}
             initialRegion={getInitialState()}>
