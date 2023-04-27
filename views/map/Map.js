@@ -1,13 +1,30 @@
 import * as React from 'react';
-import { View, Text,useEffect, useState, PermissionsAndroid } from 'react-native';
+import { View, Text,useEffect, useState, PermissionsAndroid, StyleSheet} from 'react-native';
 // import {requestForegroundPermissionsAsync} from 'expo-location';
 import { ImagePropTypes, TextPropTypes } from 'deprecated-react-native-prop-types';
+import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
+import itinerarios from '../Itinerarios';
+import MarkerIcon from '../../data/img/views/mapa/marker.svg';
+import { isReturnStatement } from 'typescript';
 
-
-import MapView, {Marker} from '@mvits/react-native-maps-osmdroid';
-import itinerarios from '../../data/json/itinerarios.json';
-import markerIcon from '../../data/img/views/mapa/marker.svg';
-
+//css
+const styles = StyleSheet.create({
+    bubble: {
+        flexDirection: 'row',
+        alignSelf: 'flex-start',
+        backgroundColor: '#fff',
+        borderRadius: 6,
+        borderColor: '#ccc',
+        borderWidth: 0.5,
+        padding: 15,
+    },
+    bubble_text: {
+        fontSize: 16,
+        textAlign: 'left',
+        fontFamily: 'FiraSans-Regular',
+        color: '#272133',
+    }
+});
 // Returns the initial map state (Abrantes)
 function getInitialState() {
     return {
@@ -70,29 +87,35 @@ export default function Map({ navigation }) {
 
     // async function requestLocationPermissions(){
     //  const {granted} = await  requestLocationPermissions();
-
-
-
     // }
-
-
-
 
     return (
         
         <MapView
             style={{flex:1}}
             initialRegion={getInitialState()}>
-            <Marker
-                // ^ Marker de Teste
-                coordinate={{latitude: 39.461152, longitude: -8.199535}}
-                title={"Rua Luís de Camões"}
-                description={"Rua Luís de Camões, nº 28"}
-                anchor={{ x: 0.5, y: 0.5 }}
-                // NOTA: Icons/images não aceitam svgs :')
-                // TODO: Converter SVGs em PNGs manualmente ou por uma biblioteca
-                //icon={require={markerIcon}}
-            />
+
+            {itinerarios.map((item) => {
+                return(
+                    <Marker
+                        key={item.id}
+                        coordinate={{latitude: item.coords[0], longitude: item.coords[1]}}
+                        showCalloutPress
+                        // anchor={{x: 0.5, y:0.5}}  
+                        // onPress={() => navigation.navigate('Detalhes', {itemID: item.id})}  
+                    >
+                        <MarkerIcon width="50" height="50"/>
+                        <Callout
+                            style={styles.bubble}
+                            tooltip={true}
+                            title="Test"
+                            description="test">
+                            <Text>Something</Text>
+                        </Callout>
+                    </Marker>
+                    
+                );
+            })}
         </MapView>
     );
 }
