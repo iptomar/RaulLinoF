@@ -5,6 +5,7 @@ import MapView, {Marker} from '@mvits/react-native-maps-osmdroid';
 import itinerarios from '../../data/json/itinerarios.json';
 import markerIcon from '../../data/img/views/mapa/marker.svg';
 
+
 // Returns the initial map state (Abrantes)
 function getInitialState() {
     return {
@@ -53,6 +54,7 @@ export default function Map({ navigation }) {
     const [distance, setDistance] = React.useState(null);
     const [point1, setPoint1] = React.useState(null);
     const [point2, setPoint2] = React.useState(null);
+    const [selectedMarker, setSelectedMarker] = React.useState(null);
     const [markers, setMarkers] = React.useState([
         {
             title: "Ponto A",
@@ -97,11 +99,15 @@ export default function Map({ navigation }) {
         }
     ]);
 
-const handleMarkerPress = (index) => {
-  const newMarkers = [...markers];
-  newMarkers[index].isSelected = !newMarkers[index].isSelected;
-  setMarkers(newMarkers);
-};
+    const handleMarkerPress = (index) => {
+        const newMarkers = [...markers];
+        newMarkers[index].isSelected = !newMarkers[index].isSelected;
+        setMarkers(newMarkers);
+        
+        if (newMarkers[index].isSelected) {
+          alert(newMarkers[index].title);
+        }
+      };
 
 
 React.useEffect(() => {
@@ -131,7 +137,7 @@ return (
                 <Marker
                     key={index}
                     coordinate={marker.coordinate}
-                    title={marker.title}
+                    title={selectedMarker === index ? marker.title : null}
                     description={marker.description}
                     pinColor={marker.isSelected ? "green" : marker.pinColor}
                     onPress={() => handleMarkerPress(index)}
@@ -145,5 +151,4 @@ return (
         )}
     </View>
 );
-
 }
