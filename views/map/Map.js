@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity  } from 'react-native';
 import MapView, {Marker} from '@mvits/react-native-maps-osmdroid';
 import itinerarios from '../../data/json/itinerarios.json';
+import { Button } from 'react-native';
 
 // Returns the initial map state (Abrantes)
 function getInitialState() {
@@ -99,11 +100,29 @@ export default function Map({ navigation }) {
         const newMarkers = [...markers];
         newMarkers[index].isSelected = !newMarkers[index].isSelected;
         setMarkers(newMarkers);
-        
+            
         if (newMarkers[index].isSelected) {
-          alert(newMarkers[index].title);
+            setSelectedMarker(index);
+        } else {
+            setSelectedMarker(null);
+
         }
-      };
+
+        if (newMarkers[index].isSelected) {
+            alert(newMarkers[index].title);
+          }
+    };
+    
+    const handleResetPress = () => {
+        const newMarkers = markers.map(marker => ({...marker, isSelected: false}));
+        setMarkers(newMarkers);
+        setDistance(null);
+        setPoint1(null);
+        setPoint2(null);
+        setSelectedMarker(null);
+    };
+
+      
 
 React.useEffect(() => {
     const selectedMarkers = markers.filter((marker) => marker.isSelected);
@@ -142,8 +161,8 @@ return (
         {distance !== null && (
             <View style={{position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: 'white', padding: 10}}>
                 <Text>Distância entre {point1} e  {point2}: {distance} metros</Text>
-            </View>
-            //adicionar botão para fazer reset ao cálculo da distância
+                <Button title="Reset" onPress={handleResetPress} />
+            </View>           
         )}
     </View>
 );
