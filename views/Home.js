@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image, View, Text, ScrollView, StyleSheet, Button } from 'react-native';
 
 //data from json
-import dados from './Itinerarios';
+import dados from './itinerarios';
 
 //css
 const styles = StyleSheet.create({
@@ -56,7 +56,7 @@ export default function Home({navigation}) {
                 {/* loop to see each item on Home */}
                 {dados.map((item) => {
                 return(
-                    <View style={styles.content}>
+                    <View style={styles.content} key={item.id}>
                         <Image style={styles.image} source={item.imgs[0]} /> 
                             {/* each child should have unique "key" prop to give stable identity to React element */}
                             <View style={styles.content2}>
