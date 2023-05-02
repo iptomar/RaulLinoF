@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { View, Pressable, ImageBackground, Text, Image, StyleSheet, Button } from 'react-native';
+import { View, Pressable, Text, Image, StyleSheet } from 'react-native';
 
-
-import Details from '../../data/img/views/ar/detailsIcon.svg';
 
 const style = StyleSheet.create({
     
@@ -76,10 +74,12 @@ export default function HomeScreen({ navigation }) {
                 <Image 
                     style ={style.image}
                     source={require("../../data/img/views/ar/abrantes.jpg")}/>
+                {/*
                 <View style = {style.buttonContainer}>
-                    <Pressable style= {style.button1}><Text>teste</Text></Pressable>
-                    <Pressable style= {style.button2}><Text>teste</Text></Pressable>
+                    <Pressable style= {style.button1}><Image source={require("../../data/img/views/ar/detailsIcon.jpg")}/></Pressable>
+                    <Pressable style= {style.button2}></Pressable>
                 </View>
+    */}
             </View>
             <Text style={style.description}>
                 A fun­dação de Abrantes ter-se-á ve­ri­fi­cado em me­ados do sé­culo XII, re­sul­tado da ne­ces­si­dade de de­fesa dos ter­ri­tó­rios con­quis­tados e de as­se­gurar a vida ativa de San­tarém. Para me­lhor as­se­gurar essa de­fesa, D. Afonso Hen­ri­ques doou o seu Cas­telo e ex­tenso termo à Ordem de S. Tiago da Es­pada em 1173 e seis anos de­pois con­cede-lhe foral (1179). As­so­ciada à origem do nome Abrantes existe uma lenda en­can­tada.
