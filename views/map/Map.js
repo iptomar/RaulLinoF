@@ -3,7 +3,7 @@ import { View, Text,useEffect, useState, PermissionsAndroid, StyleSheet} from 'r
 // import {requestForegroundPermissionsAsync} from 'expo-location';
 import { ImagePropTypes, TextPropTypes } from 'deprecated-react-native-prop-types';
 import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
-import itinerarios from '../Itinerarios';
+import itinerarios from '../itinerarios';
 import MarkerIcon from '../../data/img/views/mapa/marker.svg';
 import { isReturnStatement } from 'typescript';
 

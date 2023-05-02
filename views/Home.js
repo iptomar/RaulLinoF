@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image, View, Text, ScrollView, StyleSheet, Button } from 'react-native';
 
 //data from json
-import dados from './Itinerarios';
+import dados from './itinerarios';
 
 //css
 const styles = StyleSheet.create({
