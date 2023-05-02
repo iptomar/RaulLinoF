@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
-
 import MapView, {Marker} from '@mvits/react-native-maps-osmdroid';
 import itinerarios from '../../data/json/itinerarios.json';
-import markerIcon from '../../data/img/views/mapa/marker.svg';
-
 
 // Returns the initial map state (Abrantes)
 function getInitialState() {
@@ -42,10 +39,9 @@ function getDistance(lat1, lon1, lat2, lon2) {
       0.5 - Math.cos(dLat) / 2 +
       Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
       (1 - Math.cos(dLon)) / 2;
-  
+
     const distanceInKm = R * 2 * Math.asin(Math.sqrt(a)); // Distance in km
     const distanceInMeters = distanceInKm * 1000; // Distance in meters
-
     return distanceInMeters;
 }
 
@@ -109,7 +105,6 @@ export default function Map({ navigation }) {
         }
       };
 
-
 React.useEffect(() => {
     const selectedMarkers = markers.filter((marker) => marker.isSelected);
     if (selectedMarkers.length >= 2) {
@@ -118,7 +113,7 @@ React.useEffect(() => {
         const lat2 = selectedMarkers[1].coordinate.latitude;
         const long2 = selectedMarkers[1].coordinate.longitude;   
         const distance = getDistance(lat1, long1, lat2, long2);
-        setDistance(Number(distance.toFixed(0))); // Format the distance as a string with zero decimal places and convert it back to a number
+        setDistance(Number(distance.toFixed(0))); 
         setPoint1(selectedMarkers[0].title);
         setPoint2(selectedMarkers[1].title);
     } else {
@@ -148,6 +143,7 @@ return (
             <View style={{position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: 'white', padding: 10}}>
                 <Text>Distância entre {point1} e  {point2}: {distance} metros</Text>
             </View>
+            //adicionar botão para fazer reset ao cálculo da distância
         )}
     </View>
 );
