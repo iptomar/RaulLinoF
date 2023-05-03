@@ -8,31 +8,30 @@ import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
 
 
 export default function MarkersIt(){
-    const [markerSelected, setMarkerSelected] = useState(false);
+    const [markerStates, setMarkerStates] = useState({});
+  
     //handle the Press on he Marker
     const handleMarkerPress = (itemId) => {
-        setMarkerSelected((prevState) => ({ ...prevState, [itemId]: !prevState[itemId] }));
+        setMarkerStates((prevState) => ({ ...prevState, [itemId]: !prevState[itemId] }));
     };
+  
     return(
         <>
             {itinerarios.map((item) => {
-                const isSelected = markerSelected[item.id];
+                const isSelected = markerStates[item.id];
                 return(
                     <Marker
                         key={item.id}
                         coordinate={{latitude: item.coords[0], longitude: item.coords[1]}}
-                        onPress={handleMarkerPress(item.id)}
+                        onPress={() => handleMarkerPress(item.id)}
                         calloutEnabled={true}
-                        // onPress={() => navigation.navigate('Detalhes', {itemID: item.id})}  
                     >   
-                        {/* <MarkerIcon width="50" height="50"/> */}
-                    {isSelected ? (
-                        <MarkerIconYellow width="50" height="50" />
-                    ) : (
-                        <MarkerIcon width="50" height="50" />
-                    )}
+                        {isSelected ? (
+                            <MarkerIconYellow width="50" height="50" />
+                        ) : (
+                            <MarkerIcon width="50" height="50" />
+                        )}
                     </Marker>
-                    
                 );
             })}
         </>
