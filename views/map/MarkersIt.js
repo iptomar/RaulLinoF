@@ -12,14 +12,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'flex-start',
         backgroundColor: '#bbb',
-        borderRadius: 6,
+        borderRadius: 10,
         borderColor: '#ccc',
-        borderWidth: 0.5,
-        padding: 15,
+        borderWidth: 1,
+        padding: 5,
     }
 })
 
-export default function MarkersIt(){
+export default function MarkersIt({ navigation }){
     const [markerStates, setMarkerStates] = useState({});
   
     //handle the Press on he Marker
@@ -37,7 +37,10 @@ export default function MarkersIt(){
                         key={item.id}
                         coordinate={{latitude: item.coords[0], longitude: item.coords[1]}}
                         onPress={() => handleMarkerPress(item.id)}
-                        onCalloutPress={() => navigation.navigate('Detalhes', {itemID: item.id})}
+                        onCalloutPress={
+                            console.log("Working!")
+                            /*() => navigation.navigate('Detalhes', {itemID: item.id})*/
+                        }
                         calloutEnabled={true}
                     >   
                         {isSelected ? (
