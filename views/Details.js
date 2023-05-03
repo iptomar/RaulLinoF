@@ -50,7 +50,7 @@ export default function Details({ navigation, route }) {
         {dados.map((item) => {
             if(item.id === itemID){
                 return(
-                    <View >
+                    <View key={item.id}>
                         <Text style={styles.title} selectable={true}>{item.title}</Text>
                         <View style={styles.content}>
                             {item.imgs.map((img, index)=>{

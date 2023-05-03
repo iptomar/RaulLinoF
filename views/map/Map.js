@@ -1,30 +1,29 @@
-import * as React from 'react';
-import { View, Text,useEffect, useState, PermissionsAndroid, StyleSheet} from 'react-native';
-// import {requestForegroundPermissionsAsync} from 'expo-location';
-import { ImagePropTypes, TextPropTypes } from 'deprecated-react-native-prop-types';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
-import itinerarios from '../itinerarios';
+import itinerarios from '../Itinerarios';
 import MarkerIcon from '../../data/img/views/mapa/marker.svg';
 import { isReturnStatement } from 'typescript';
 
-//css
 const styles = StyleSheet.create({
-    bubble: {
-        flexDirection: 'row',
-        alignSelf: 'flex-start',
-        backgroundColor: '#fff',
-        borderRadius: 6,
-        borderColor: '#ccc',
-        borderWidth: 0.5,
-        padding: 15,
+    button: {
+        position: 'absolute',
+        top: 20,
+        right: 0,
+        backgroundColor: '#272133',
+        padding: 10,
+        borderRadius: 5,
     },
-    bubble_text: {
-        fontSize: 16,
-        textAlign: 'left',
-        fontFamily: 'FiraSans-Regular',
-        color: '#272133',
-    }
+    button2: {
+        position: 'absolute',
+        top: 80,
+        right: 0,
+        backgroundColor: '#272133',
+        padding: 10,
+        borderRadius: 5,
+    },
 });
+
 // Returns the initial map state (Abrantes)
 function getInitialState() {
     return {
@@ -38,18 +37,6 @@ function getInitialState() {
 // Returns the number of buildings
 function numItinerarios(){
     return itinerarios.dados.length;
-}
-
-// Sets a Map Marker of a building
-function setMarker(coordinate, title, description){
-
-}
-
-// Loads all buildings into Markers
-function loadItinerarios(){
-    for(let i=0; i<numItinerarios(); i++){
-        
-    }
 }
 
  /////   Joao Localiçao 
@@ -72,50 +59,58 @@ function loadItinerarios(){
 
  }
 
- // Ruben penso que o probelma esta aqui pois se tiver isto comentado  nao me da erro  
- ///   useEffect(() => {
-   ///     userLocation();
-   ///   },[])
+ export default function Map({ navigation }) {
+    const [currentLocation, setCurrentLocation] = useState(false);
 
+    //for the button on the top right corner
+    useEffect(() => {
+        //...
+      }, []);
 
-/////////   ate qui joao 
+    //get the current location of the phone
+    useEffect(() => {
+        Geolocation.getCurrentPosition(
+        position => {
+            setCurrentLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            });
+        },
+        error => {
+            console.log(error.code, error.message);
+        },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+        );
+    }, []);
 
-
-
-
-export default function Map({ navigation }) {
-
-    // async function requestLocationPermissions(){
-    //  const {granted} = await  requestLocationPermissions();
-    // }
 
     return (
-        
-        <MapView
-            style={{flex:1}}
-            initialRegion={getInitialState()}>
-
-            {itinerarios.map((item) => {
-                return(
-                    <Marker
-                        key={item.id}
-                        coordinate={{latitude: item.coords[0], longitude: item.coords[1]}}
-                        showCalloutPress
-                        // anchor={{x: 0.5, y:0.5}}  
-                        // onPress={() => navigation.navigate('Detalhes', {itemID: item.id})}  
-                    >
-                        <MarkerIcon width="50" height="50"/>
-                        <Callout
-                            style={styles.bubble}
-                            tooltip={true}
-                            title="Test"
-                            description="test">
-                            <Text>Something</Text>
-                        </Callout>
+        <View style={{ flex: 1 }}>
+            <MapView
+                style={{flex:1}}
+                initialRegion={getInitialState()}>
+                {currentLocation && (
+                    <Marker 
+                        coordinate={currentLocation} 
+                        title="My Location"
+                        >
+                        <MarkerMyLocal width="50" height="50"/>
                     </Marker>
-                    
-                );
-            })}
-        </MapView>
+                )}
+                {/* Markers from the "itenerarios.js" file */}
+                <MarkersIt />
+            </MapView>
+            {/* on screen buttons */}
+            <TouchableOpacity style={styles.button}
+                onPress={() => console.log('Button pressed')}
+                >
+                <MapItinerary width="50" height="50" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button2}
+                onPress={() => console.log('Button pressed')}
+                >
+                <MapHistory width="50" height="50" />
+            </TouchableOpacity>
+        </View>
     );
 }
