@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import itinerarios from '../Itinerarios';
 import MarkerIcon from '../../data/img/views/mapa/marker.svg';
 import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
+import MapItinerary from '../../data/img/views/mapa/itinerarioIcon.svg';
 
 const styles = StyleSheet.create({
     bubble: {
@@ -24,6 +25,7 @@ export default function MarkersIt(){
     const handleMarkerPress = (itemId) => {
         setMarkerStates((prevState) => ({ ...prevState, [itemId]: !prevState[itemId] }));
     };
+
   
     return(
         <>
