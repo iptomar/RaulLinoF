@@ -1,11 +1,21 @@
 import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
-import itinerarios from '../itinerarios';
+import itinerarios from '../Itinerarios';
 import MarkerIcon from '../../data/img/views/mapa/marker.svg';
 import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
 
-
+const styles = StyleSheet.create({
+    bubble: {
+        flexDirection: 'row',
+        alignSelf: 'flex-start',
+        backgroundColor: '#bbb',
+        borderRadius: 6,
+        borderColor: '#ccc',
+        borderWidth: 0.5,
+        padding: 15,
+    }
+})
 
 export default function MarkersIt(){
     const [markerStates, setMarkerStates] = useState({});
@@ -24,6 +34,7 @@ export default function MarkersIt(){
                         key={item.id}
                         coordinate={{latitude: item.coords[0], longitude: item.coords[1]}}
                         onPress={() => handleMarkerPress(item.id)}
+                        onCalloutPress={() => navigation.navigate('Detalhes', {itemID: item.id})}
                         calloutEnabled={true}
                     >   
                         {isSelected ? (
@@ -31,6 +42,12 @@ export default function MarkersIt(){
                         ) : (
                             <MarkerIcon width="50" height="50" />
                         )}
+                        <Callout tooltip>
+                            <View style={styles.bubble}>
+                                <Text>{item.title}</Text>
+                                <Text>{item.year}</Text>
+                            </View>
+                        </Callout>
                     </Marker>
                 );
             })}

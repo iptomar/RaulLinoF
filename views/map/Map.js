@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
-import itinerarios from '../itinerarios';
+import itinerarios from '../Itinerarios';
 import Geolocation from 'react-native-geolocation-service';
 import MarkersIt from './MarkersIt';
 import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
@@ -64,7 +64,7 @@ export default function Map({ navigation }) {
     return (
         
         <MapView
-            style={{flex:1}}
+            style={{height:"100%"}}
             initialRegion={getInitialState()}>
             {currentLocation && (
                 <Marker 
@@ -74,7 +74,7 @@ export default function Map({ navigation }) {
                     <MarkerMyLocal width="50" height="50"/>
                 </Marker>
             )}
-            {/* Markers from the "itenerarios.js" file */}
+            {/* Markers from the "itinerarios.js" file */}
             <MarkersIt />
         </MapView>
     );
