@@ -4,6 +4,9 @@ import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
 import itinerarios from '../itinerarios';
 import Geolocation from 'react-native-geolocation-service';
 import MarkersIt from './MarkersIt';
+import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
+import MarkerMyLocal from '../../data/img/views/mapa/currentPositionCircle.svg';
+
 
 // Returns the initial map state (Abrantes)
 function getInitialState() {
@@ -40,13 +43,9 @@ function numItinerarios(){
 
  }
 export default function Map({ navigation }) {
-
-    // async function requestLocationPermissions(){
-    //  const {granted} = await  requestLocationPermissions();
-    // }
+    const [currentLocation, setCurrentLocation] = useState(false);
 
     //get the current location of the phone
-    const [currentLocation, setCurrentLocation] = useState(null);
     useEffect(() => {
         Geolocation.getCurrentPosition(
         position => {
@@ -68,7 +67,12 @@ export default function Map({ navigation }) {
             style={{flex:1}}
             initialRegion={getInitialState()}>
             {currentLocation && (
-                <Marker coordinate={currentLocation} title="My Location"></Marker>
+                <Marker 
+                    coordinate={currentLocation} 
+                    title="My Location"
+                    >
+                    <MarkerMyLocal width="50" height="50"/>
+                </Marker>
             )}
             {/* Markers from the "itenerarios.js" file */}
             <MarkersIt />
