@@ -7,6 +7,7 @@ import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
 import MapItinerary from '../../data/img/views/mapa/itinerarioIcon.svg';
 
 const styles = StyleSheet.create({
+    // TODO: Customizar para um melhor visual
     bubble: {
         flexDirection: 'row',
         alignSelf: 'flex-start',
