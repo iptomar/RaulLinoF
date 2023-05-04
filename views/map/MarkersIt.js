@@ -1,10 +1,9 @@
 import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import itinerarios from '../Itinerarios';
 import MarkerIcon from '../../data/img/views/mapa/marker.svg';
 import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
-import MapItinerary from '../../data/img/views/mapa/itinerarioIcon.svg';
 
 const styles = StyleSheet.create({
     // TODO: Customizar para um melhor visual

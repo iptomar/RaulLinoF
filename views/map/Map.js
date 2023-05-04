@@ -3,7 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
 import itinerarios from '../Itinerarios';
 import MarkerIcon from '../../data/img/views/mapa/marker.svg';
+import MapItinerary from '../../data/img/views/mapa/itinerarioIcon.svg';
+import MapHistory from '../../data/img/views/mapa/historiaOnClickIcon.svg';
 import { isReturnStatement } from 'typescript';
+import Geolocation from '@react-native-community/geolocation';
+import MarkersIt from './MarkersIt';
 
 const styles = StyleSheet.create({
     button: {
