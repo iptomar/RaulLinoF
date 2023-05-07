@@ -108,9 +108,9 @@ export default function Map({ navigation }) {
 
         }
 
-        if (newMarkers[index].isSelected) {
-            alert(newMarkers[index].title);
-          }
+        //if (newMarkers[index].isSelected) {
+        //    alert(newMarkers[index].title);
+        //  }
     };
     
     const handleResetPress = () => {
@@ -151,7 +151,7 @@ return (
                 <Marker
                     key={index}
                     coordinate={marker.coordinate}
-                    title={selectedMarker === index ? marker.title : null}
+                    //title={selectedMarker === index ? marker.title : null}
                     description={marker.description}
                     pinColor={marker.isSelected ? "green" : marker.pinColor}
                     onPress={() => handleMarkerPress(index)}
@@ -159,10 +159,16 @@ return (
             ))}
         </MapView>
         {distance !== null && (
-            <View style={{position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: 'white', padding: 10}}>
-                <Text>Distância entre {point1} e  {point2}: {distance} metros</Text>
-                <Button title="Reset" onPress={handleResetPress} />
-            </View>           
+                    <View style={{flexDirection: 'row'}}>
+                    <View style={{backgroundColor: 'white', padding: 10, flex: 1}}>
+                      <Text>
+                        Distância entre {point1} e {point2}: {distance} metros
+                      </Text>
+                    </View>
+                    <View style={{backgroundColor: 'white', padding: 10}}>
+                      <Button title="Reset" onPress={handleResetPress} color="#008080" />
+                    </View>
+                  </View> 
         )}
     </View>
 );
