@@ -1,0 +1,117 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Audiowide-Regular.ttf",
+      "sha1": "651503b7a0a89f49f78f14d04c62f811853573cd"
+    },
+    {
+      "path": "assets/fonts/FiraSans-Black.ttf",
+      "sha1": "548467ce1f7910131bcdb62873e5e057b79a2ec1"
+    },
+    {
+      "path": "assets/fonts/FiraSans-BlackItalic.ttf",
+      "sha1": "7a4bbec539bf1bacb5689bbf272c9d046ce79367"
+    },
+    {
+      "path": "assets/fonts/FiraSans-Bold.ttf",
+      "sha1": "561c89688fc62875baa2e9ddb78241f224f82572"
+    },
+    {
+      "path": "assets/fonts/FiraSans-BoldItalic.ttf",
+      "sha1": "50deef672d3fc8490142239de8f175bea6315ce9"
+    },
+    {
+      "path": "assets/fonts/FiraSans-ExtraBold.ttf",
+      "sha1": "6ef3e817c19486b81a9cf998d73fb1585ee2770b"
+    },
+    {
+      "path": "assets/fonts/FiraSans-ExtraBoldItalic.ttf",
+      "sha1": "b1e3e8a5c0b370a2cab05cab8754c7c44ee4d75c"
+    },
+    {
+      "path": "assets/fonts/FiraSans-ExtraLight.ttf",
+      "sha1": "d811fb436d85919aa7b9a894de576c04f9aa257e"
+    },
+    {
+      "path": "assets/fonts/FiraSans-ExtraLightItalic.ttf",
+      "sha1": "a1462b775819f50e8de9038ea7db024367883363"
+    },
+    {
+      "path": "assets/fonts/FiraSans-Italic.ttf",
+      "sha1": "ad1456d19f8dd1cfe407417a4e6698d152370e5a"
+    },
+    {
+      "path": "assets/fonts/FiraSans-Light.ttf",
+      "sha1": "a45e197b3a8d59b9deac8dce6f536db907277dc8"
+    },
+    {
+      "path": "assets/fonts/FiraSans-LightItalic.ttf",
+      "sha1": "9d76db8f28fc22fdd1a587ebba24edde82e7ef0f"
+    },
+    {
+      "path": "assets/fonts/FiraSans-Medium.ttf",
+      "sha1": "3b96cd9754cf8edb231561cd1acf4a977b82da88"
+    },
+    {
+      "path": "assets/fonts/FiraSans-MediumItalic.ttf",
+      "sha1": "253d01a47b0ed2c3cce60747a836219aa44eb86e"
+    },
+    {
+      "path": "assets/fonts/FiraSans-Regular.ttf",
+      "sha1": "4fff63ef068a1006ce7f41480e6169211bc67a85"
+    },
+    {
+      "path": "assets/fonts/FiraSans-SemiBold.ttf",
+      "sha1": "9446a0d27bd91e12dc739332fc0e4af2fbf17cc0"
+    },
+    {
+      "path": "assets/fonts/FiraSans-SemiBoldItalic.ttf",
+      "sha1": "1159dc32754f8bd7da0bc9ff13e04441daa6eb71"
+    },
+    {
+      "path": "assets/fonts/FiraSans-Thin.ttf",
+      "sha1": "dc9ca5579ef99487b865178aed59326a235463b9"
+    },
+    {
+      "path": "assets/fonts/FiraSans-ThinItalic.ttf",
+      "sha1": "6c31db37adae7190ce66a15282aef93f95d0a80a"
+    },
+    {
+      "path": "assets/fonts/Unbounded-Black.ttf",
+      "sha1": "00e02557094056e51b72c73f460984190c9e0a21"
+    },
+    {
+      "path": "assets/fonts/Unbounded-Bold.ttf",
+      "sha1": "f89b23f2cbc1d6cb988f3e1a1ec4231a4a8fa4e6"
+    },
+    {
+      "path": "assets/fonts/Unbounded-ExtraBold.ttf",
+      "sha1": "eb3853f93e318cfe397cdb6b7bad1846572234da"
+    },
+    {
+      "path": "assets/fonts/Unbounded-ExtraLight.ttf",
+      "sha1": "03ff94f6f45499a62e88f6ebc738dd30bb5a2a35"
+    },
+    {
+      "path": "assets/fonts/Unbounded-Light.ttf",
+      "sha1": "4b64d2cbdedf7974239f84308b0524da4e9d8bac"
+    },
+    {
+      "path": "assets/fonts/Unbounded-Medium.ttf",
+      "sha1": "664ab6b651af767113fceafdbaa05213b3897291"
+    },
+    {
+      "path": "assets/fonts/Unbounded-Regular.ttf",
+      "sha1": "0a6845c0f816fa0c799d5b0c5b6cbf07c2b83bdd"
+    },
+    {
+      "path": "assets/fonts/Unbounded-SemiBold.ttf",
+      "sha1": "8f575f341850f176b9c4edc256d5fbfebef65151"
+    },
+    {
+      "path": "assets/fonts/Wallpoet-Regular.ttf",
+      "sha1": "416cd30b942034561c11a0f7e8bb2f6ebd21dd38"
+    }
+  ]
+}
