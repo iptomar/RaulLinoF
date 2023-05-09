@@ -1,64 +1,96 @@
-// NOTE: WIP
 import * as React from 'react';
+import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // Views
-import HomeView from './views/Home';
-import BioView from './views/Bio';
-import MapView from './views/map/Map';
-import ARView from './views/ar/AR';
+import HomeView from './Home';
+import DetailsView from './Details';
+import BioView from './Bio';
+import MapView from './map/Map';
+import ARView from './ar/AR';
 
-// View names
-const homeName = "Página Principal";
-const bioName = "Biografia";
-const mapName = "Mapa Interativo";
-const arName = "Realidade Aumentada";
+// View Names
+const homeName = "Home";
+const detailsName = "Details";
+const bioName = "Bio";
+const mapName = "Map";
+const arName = "AR";
 
 // View Icons
-import HomeIcon from './data/img/navbar/nav_homeIcon';
-import BioIcon from './data/img/navbar/nav_bioIcon';
-import MapIcon from './data/img/navbar/nav_mapIcon';
-import ARIcon from './data/img/navbar/nav_arIcon';
+import HomeIcon from '../data/img/navbar/nav_homeIcon.svg';
+import BioIcon from '../data/img/navbar/nav_bioIcon.svg';
+import MapIcon from '../data/img/navbar/nav_mapIcon.svg';
+import ARIcon from '../data/img/navbar/nav_arIcon.svg';
 
+
+const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function NavBar() {
-  return (
+export default function Navigation(){
+  return(
     <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName={homeName}
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            let rn = route.name;
-            
-            // TODO: Voltar aqui mais tarde para mudar o icon que está selecionado
-            switch(rn){
-              case 'homeName': iconName = focused ? HomeIcon : HomeIcon; break;
-              case 'bioName': iconName = focused ? BioIcon : BioIcon; break;
-              case 'mapName': iconName = focused ? MapIcon : MapIcon; break;
-              case 'arName': iconName = focused ? ARIcon : ARIcon; break;
-            }
-
-            // You can return any component that you like here!
-            return <Icon name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'grey',
-          labelStyle: { paddingBottom: 10, fontSize: 10 },
-          style: { padding: 10, height: 70}
-        }}>
-
-        <Tab.Screen name={homeName} component={HomeView} />
-        <Tab.Screen name={bioName} component={BioView} />
-        <Tab.Screen name={mapName} component={MapView} />
-        <Tab.Screen name={arName} component={ARView} />
-      </Tab.Navigator>
+      <NavBar />
     </NavigationContainer>
   );
 }
 
-export default NavBar;
+const HomeStack = () => {
+  return(
+    <Stack.Navigator>
+      <Stack.Screen options={{headerShown: false}} name='Locais' component={HomeView} />
+      <Stack.Screen options={{headerShown: false}} name='Detalhes' component={DetailsView} />
+    </Stack.Navigator>
+  )
+}
+
+export function NavBar() {
+  return (
+    <View style={{ flex: 1 }}>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarShowLabel: false,
+          tabBarActiveBackgroundColor: "#ccae35",
+          tabBarInactiveBackgroundColor: "white",
+        }}
+      >
+        <Tab.Screen 
+          name="Raul Lino" 
+          component={HomeStack} 
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <HomeIcon width="50" height="50" color="#00ff00"/>
+            )
+          }}
+        />
+        <Tab.Screen 
+          name="Biografia" 
+          component={BioView} 
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <BioIcon width="50" height="50"/>
+            )
+          }}
+        />
+        <Tab.Screen 
+          name="Mapa" 
+          component={MapView} 
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <MapIcon width="50" height="50"/>
+            )
+          }}
+        />
+        <Tab.Screen 
+          name="Realidade Aumentada"
+          component={ARView} 
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <ARIcon width="50" height="50"/>
+            )
+          }}
+        />
+      </Tab.Navigator>
+    </View>
+  );
+}
