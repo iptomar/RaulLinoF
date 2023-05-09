@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
-import itinerarios from '../Itinerarios';
+import itinerarios from '../itinerarios';
 //markers
 import MarkerMyLocal from '../../data/img/views/mapa/currentPositionCircle.svg';
 import MapItinerary from '../../data/img/views/mapa/itinerarioIcon.svg';
