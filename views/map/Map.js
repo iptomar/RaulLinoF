@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
-import itinerarios from '../Itinerarios';
+import { useNavigation } from '@react-navigation/native';
 //markers
 import MarkerMyLocal from '../../data/img/views/mapa/currentPositionCircle.svg';
 import MapItinerary from '../../data/img/views/mapa/itinerarioIcon.svg';
@@ -45,7 +45,7 @@ function getInitialState() {
 
  export default function Map({ navigation }) {
     const [currentLocation, setCurrentLocation] = useState(false);
-    const [historyClicked, setHistoryClicked] = useState(false);
+    const [historyClicked, setHistoryClicked] = useState(true);
 
     //for the buttons on the top right corner
     useEffect(() => {
@@ -93,7 +93,7 @@ function getInitialState() {
                             console.log('Current Location:', currentLocation);
                         },
                         error => {
-                            console.log('Error setting the location. Error:', error);
+                            // console.log('Error setting the location. Error:', error);
                         },
                         { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
                 );
@@ -110,7 +110,6 @@ function getInitialState() {
 
         const handleHistoryPress = () => {
             setHistoryClicked((prevState) => !prevState);
-            console.log(historyClicked);
         }
 
     return (
@@ -127,8 +126,8 @@ function getInitialState() {
                     </Marker>
                 )}
                 {/* Markers from the "itenerarios.js" file */}
-                <MarkersIt historyClicked={historyClicked}/>
-            </MapView>
+                <MarkersIt historyClicked={historyClicked} navigation={navigation}/>
+            </MapView  >
             {/* on screen buttons */}
             <TouchableOpacity style={styles.button}
                 onPress={() => console.log('Button pressed')}

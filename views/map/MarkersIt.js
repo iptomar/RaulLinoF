@@ -1,10 +1,11 @@
 import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet,TouchableOpacity} from 'react-native';
 import itinerarios from '../Itinerarios';
 import MarkerIcon from '../../data/img/views/mapa/marker.svg';
 import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
 import PlusBtn from '../../data/img/views/adicionarPreto.svg';
+import MapHis from './History';
 
 const styles = StyleSheet.create({
     bubble: {
@@ -30,24 +31,45 @@ const styles = StyleSheet.create({
 
 export default function MarkersIt({ navigation, historyClicked }){
     const [markerStates, setMarkerStates] = useState({});
-  
-    useEffect(() => {
-        if(historyClicked){
-            console.log('History Clicked on Markers It');
-        }
-    });
+    const [selectedMarkersList, setSelectedMarkersList] = useState([]);
 
-    //handle the Press on he Marker
+    //handle the Press on he Marker and save on the array wich items are selected
     const handleMarkerPress = (itemId) => {
-        setMarkerStates((prevState) => ({ ...prevState, [itemId]: !prevState[itemId] }));
-    };
+        setMarkerStates((prevState) => {
+            const updatedState = { ...prevState, [itemId]: !prevState[itemId] };
+        
+            if (updatedState[itemId]) {
+                // If marker is selected, add from array selectedMarkersList
+                setSelectedMarkersList((prevList) => [...prevList, itemId]);
+            } else {
+                // If marker is deselected, remove from array selectedMarkersList
+                setSelectedMarkersList((prevList) =>
+                prevList.filter((id) => id !== itemId)
+                );
+            }
+            return updatedState;
+        });
+      };
+      
 
     const handleAddPress = (itemID) => {
         console.log('AddPressed');
     }
+
+    //navigation to history is the button of the history is pressed
+    //it has to be false because everytime we click on the marker it render another true which causes it to navigate to the details page everytime we click on a marker
+    useEffect(() => {
+        if(!historyClicked) {
+            console.log('Clicked!!', historyClicked)
+            navigation.navigate('History', {selectedMarkersList: selectedMarkersList});
+        }
+    },[historyClicked,navigation]);
+
   
     return(
         <>
+            {/* on screen buttons */}
+
             {itinerarios.map((item) => {
                 const isSelected = markerStates[item.id];
                 return(
