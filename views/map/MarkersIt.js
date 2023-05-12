@@ -1,22 +1,32 @@
 import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 import itinerarios from '../Itinerarios';
 import MarkerIcon from '../../data/img/views/mapa/marker.svg';
 import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
+import PlusBtn from '../../data/img/views/adicionarPreto.svg';
 
 const styles = StyleSheet.create({
-    // TODO: Customizar para um melhor visual
     bubble: {
-        flexDirection: 'row',
-        alignSelf: 'flex-start',
-        backgroundColor: '#bbb',
-        borderRadius: 10,
-        borderColor: '#ccc',
-        borderWidth: 1,
-        padding: 5,
-    }
-})
+        height: '100%', 
+        width: '100%',
+        backgroundColor: '#ead8c1',
+        opacity: 0.9,
+        borderRadius: 5,
+        padding: 2,
+        alignItems: 'center',
+    },
+    bubbleText: {
+        fontFamily: 'Unbounded-Regular',
+        color: '#272133',
+        margin: 2,
+        fontSize: 10,
+        lineHeight: 13,
+    },
+    bubbleBtn: {
+        marginBottom: 2,
+    },
+  });
 
 export default function MarkersIt({ navigation }){
     const [markerStates, setMarkerStates] = useState({});
@@ -26,6 +36,9 @@ export default function MarkersIt({ navigation }){
         setMarkerStates((prevState) => ({ ...prevState, [itemId]: !prevState[itemId] }));
     };
 
+    const handleAddPress = (itemID) => {
+        console.log('AddPressed');
+    }
   
     return(
         <>
@@ -36,10 +49,10 @@ export default function MarkersIt({ navigation }){
                         key={item.id}
                         coordinate={{latitude: item.coords[0], longitude: item.coords[1]}}
                         onPress={() => handleMarkerPress(item.id)}
-                        onCalloutPress={
-                            console.log("Working!")
-                            /*() => navigation.navigate('Detalhes', {itemID: item.id})*/
-                        }
+                        // onCalloutPress={
+                        //     console.log("Working!")
+                        //     /*() => navigation.navigate('Detalhes', {itemID: item.id})*/
+                        // }
                         calloutEnabled={true}
                     >   
                         {isSelected ? (
@@ -49,8 +62,10 @@ export default function MarkersIt({ navigation }){
                         )}
                         <Callout tooltip>
                             <View style={styles.bubble}>
-                                <Text>{item.title}</Text>
-                                <Text>{item.year}</Text>
+                                <Text style={styles.bubbleText}>{item.title.toUpperCase()}</Text>
+                                <TouchableOpacity style={styles.bubbleBtn} onPress={handleAddPress}>
+                                    <PlusBtn width={40} height={40} />
+                                </TouchableOpacity>
                             </View>
                         </Callout>
                     </Marker>
