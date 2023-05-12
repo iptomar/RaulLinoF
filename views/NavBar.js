@@ -8,6 +8,8 @@ import HomeView from './Home';
 import DetailsView from './Details';
 import BioView from './Bio';
 import MapView from './map/Map';
+import MarkersView from './map/MarkersIt';
+import HistoryView from './map/History';
 import ARView from './ar/AR';
 
 // View Names
@@ -44,6 +46,16 @@ const HomeStack = () => {
   )
 }
 
+const MapStack = () => {
+  return(
+    <Stack.Navigator>
+      <Stack.Screen options={{headerShown: false}} name='Map' component={MapView} />
+      <Stack.Screen options={{headerShown: false}} name='Markers' component={MarkersView} />
+      <Stack.Screen options={{headerShown: false}} name='History' component={HistoryView} />
+    </Stack.Navigator>
+  )
+}
+
 export function NavBar() {
   return (
     <View style={{ flex: 1 }}>
@@ -74,7 +86,7 @@ export function NavBar() {
         />
         <Tab.Screen 
           name="Mapa" 
-          component={MapView} 
+          component={MapStack} 
           options={{
             tabBarIcon: ({ focused }) => (
               <MapIcon width="50" height="50"/>

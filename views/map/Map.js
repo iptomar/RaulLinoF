@@ -45,6 +45,7 @@ function getInitialState() {
 
  export default function Map({ navigation }) {
     const [currentLocation, setCurrentLocation] = useState(false);
+    const [historyClicked, setHistoryClicked] = useState(false);
 
     //for the buttons on the top right corner
     useEffect(() => {
@@ -107,6 +108,11 @@ function getInitialState() {
             getCurrentLocation();
         }, []);
 
+        const handleHistoryPress = () => {
+            setHistoryClicked((prevState) => !prevState);
+            console.log(historyClicked);
+        }
+
     return (
         <View style={{ height: '100%' }}>
             <MapView
@@ -121,7 +127,7 @@ function getInitialState() {
                     </Marker>
                 )}
                 {/* Markers from the "itenerarios.js" file */}
-                <MarkersIt />
+                <MarkersIt historyClicked={historyClicked}/>
             </MapView>
             {/* on screen buttons */}
             <TouchableOpacity style={styles.button}
@@ -129,10 +135,8 @@ function getInitialState() {
                 >
                 <MapItinerary width="50" height="50" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button2}
-                onPress={() => console.log('Button pressed')}
-                >
-                <MapHistory width="50" height="50" />
+            <TouchableOpacity style={styles.button2}>
+                <MapHistory width="50" height="50" onPress={handleHistoryPress}/>
             </TouchableOpacity>
         </View>
     );

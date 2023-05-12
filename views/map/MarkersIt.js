@@ -1,5 +1,5 @@
 import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 import itinerarios from '../Itinerarios';
 import MarkerIcon from '../../data/img/views/mapa/marker.svg';
@@ -28,9 +28,15 @@ const styles = StyleSheet.create({
     },
   });
 
-export default function MarkersIt({ navigation }){
+export default function MarkersIt({ navigation, historyClicked }){
     const [markerStates, setMarkerStates] = useState({});
   
+    useEffect(() => {
+        if(historyClicked){
+            console.log('History Clicked on Markers It');
+        }
+    });
+
     //handle the Press on he Marker
     const handleMarkerPress = (itemId) => {
         setMarkerStates((prevState) => ({ ...prevState, [itemId]: !prevState[itemId] }));
@@ -49,10 +55,6 @@ export default function MarkersIt({ navigation }){
                         key={item.id}
                         coordinate={{latitude: item.coords[0], longitude: item.coords[1]}}
                         onPress={() => handleMarkerPress(item.id)}
-                        // onCalloutPress={
-                        //     console.log("Working!")
-                        //     /*() => navigation.navigate('Detalhes', {itemID: item.id})*/
-                        // }
                         calloutEnabled={true}
                     >   
                         {isSelected ? (
