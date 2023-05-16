@@ -74,7 +74,7 @@ export default function AR({ navigation }) {
                     source={require("../../data/img/views/ar/abrantes.jpg")}/>
             </View>
 
-            <TouchableOpacity style={style.button} onPress={() => console.log('Details pressed')}>
+            <TouchableOpacity style={style.button} onPress={navigation.navigate('ARDetails')}>
                 <DetailsIcon width="50" height="50" />
             </TouchableOpacity>
             <TouchableOpacity style={style.button2} onPress={() => console.log('Video pressed')}>
