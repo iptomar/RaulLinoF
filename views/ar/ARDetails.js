@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, View, Text, StyleSheet, ScrollView } from 'react-native';
+import { Image, View, Text, StyleSheet, ScrollView, Button } from 'react-native';
 
 import DetailsArco from '../../data/img/views/ar/detailsArco.png';
 import DetailsVertical from '../../data/img/views/ar/detailsVertical.png';
@@ -48,13 +48,53 @@ const styles = StyleSheet.create({
 
 export default function ARDetails({ navigation }) {
     return (
-        <ScrollView >
+        <ScrollView>
             <View style={styles.content}>
-                <Image style={styles.image} source={{DetailsArco}} />
+                <Image style={styles.image} source={DetailsArco} />
                 <View style={styles.content2}>
-                    <Text style={styles.description}></Text>
+                    <Text style={styles.description}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit dictum sem sed malesuada. 
+                        Curabitur molestie nisl non urna euismod faucibus. Quisque rhoncus justo at est ullamcorper lacinia.
+                    </Text>
                 </View>
             </View> 
+            <View style={styles.content}>
+                <Image style={styles.image} source={DetailsVertical} />
+                <View style={styles.content2}>
+                    <Text style={styles.description}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit dictum sem sed malesuada. 
+                        Curabitur molestie nisl non urna euismod faucibus. Quisque rhoncus justo at est ullamcorper lacinia. 
+                    </Text>
+                </View>
+            </View> 
+            <View style={styles.content}>
+                <Image style={styles.image} source={DetailsJanela} />
+                <View style={styles.content2}>
+                    <Text style={styles.description}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit dictum sem sed malesuada. 
+                        Curabitur molestie nisl non urna euismod faucibus. Quisque rhoncus justo at est ullamcorper lacinia.
+                    </Text>
+                </View>
+            </View> 
+            <View style={styles.content}>
+                <Image style={styles.image} source={DetailsTelhado} />
+                <View style={styles.content2}>
+                    <Text style={styles.description}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit dictum sem sed malesuada. 
+                        Curabitur molestie nisl non urna euismod faucibus. Quisque rhoncus justo at est ullamcorper lacinia. 
+                    </Text>
+                </View>
+            </View> 
+            <View style={styles.content}>
+                <Image style={styles.image} source={DetailsHorizontal} />
+                <View style={styles.content2}>
+                    <Text style={styles.description}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit dictum sem sed malesuada. 
+                        Curabitur molestie nisl non urna euismod faucibus. Quisque rhoncus justo at est ullamcorper lacinia.
+                    </Text>
+                </View>
+            </View> 
+            <Button title='Voltar' onPress={()=> navigation.navigate('AR')} color={'#078C6B'}/>
         </ScrollView>
     );
 }

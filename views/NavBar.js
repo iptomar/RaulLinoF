@@ -9,6 +9,7 @@ import DetailsView from './Details';
 import BioView from './Bio';
 import MapView from './map/Map';
 import ARView from './ar/AR';
+import ARDetailsView from './ar/ARDetails';
 
 // View Names
 const homeName = "Home";
@@ -40,6 +41,15 @@ const HomeStack = () => {
     <Stack.Navigator>
       <Stack.Screen options={{headerShown: false}} name='Locais' component={HomeView} />
       <Stack.Screen options={{headerShown: false}} name='Detalhes' component={DetailsView} />
+    </Stack.Navigator>
+  )
+}
+
+const ARStack = () => {
+  return(
+    <Stack.Navigator>
+      <Stack.Screen options={{headerShown: false}} name='AR' component={ARView} />
+      <Stack.Screen options={{headerShown: false}} name='ARDetails' component={ARDetailsView} />
     </Stack.Navigator>
   )
 }
@@ -83,7 +93,7 @@ export function NavBar() {
         />
         <Tab.Screen 
           name="Realidade Aumentada"
-          component={ARView} 
+          component={ARStack} 
           options={{
             tabBarIcon: ({ focused }) => (
               <ARIcon width="50" height="50"/>
