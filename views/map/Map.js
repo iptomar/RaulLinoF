@@ -6,7 +6,8 @@ import MarkerMyLocal from '../../data/img/views/mapa/currentPositionCircle.svg';
 import MapItinerary from '../../data/img/views/mapa/itinerarioIcon.svg';
 import MapHistory from '../../data/img/views/mapa/historiaOnClickIcon.svg';
 import MarkersIt from './MarkersIt';
-import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
+import MapView, { Marker, Callout, CalloutSubview  } from '@mvits/react-native-maps-osmdroid';
+import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
 //location stuff
 import { PermissionsAndroid, Platform } from 'react-native';
 import * as Permissions from 'react-native-permissions';
@@ -131,7 +132,7 @@ function getInitialState() {
                         title="My Location"
                         >
                        {console.log("Minha localizacaao Fim  ",currentLocation)}
-                        <MarkerMyLocal width="50" height="50"/>
+                        <MarkerIconYellow  />
                     </Marker>
                 )}
                 {/* Markers from the "itenerarios.js" file */}
