@@ -102,7 +102,7 @@ function getInitialState() {
                             console.log('Error setting the location. Error:', error);
                         },
                         // precisao do GPS 
-                        {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+                        {enableHighAccuracy: false, timeout: 15000, maximumAge: 10000 },
                      
                 );
                 } else {
