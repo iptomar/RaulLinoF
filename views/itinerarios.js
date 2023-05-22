@@ -50,6 +50,37 @@ export const dados = [
         },
         {
             "id": 4,
+            "title": "Rua do Arcediago",
+            "year": "1923",
+            "address": "Rua do Arcediago, nº 19",
+            "coords": [
+                39.462754,
+                -8.196875
+            ],
+            "typology": "Habitação Unifamiliar",
+            "info": "O projeto deste edifício corresponde a uma habitação de carácter urbyear, que se desenvolve em dois pisos, e que apresenta uma loggia aberta no primeiro piso, em arcada tripla, sobre a Rua do Arcediago.",
+            "imgs": [
+                require("../data/img/itinerario/9/it_091.jpg"),
+                require("../data/img/itinerario/9/it_092.jpg")
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Rua General Manuel António Mourato",
+            "year": "1923",
+            "address": "Rua General Manuel António Mourato, nº 11",
+            "coords": [
+                39.463151,
+                -8.197996
+            ],
+            "typology": "Habitação Unifamiliar",
+            "info": "Este projeto de Raul Lino propôs a ampliação de um edifício térreo pré-existente e localizado no centro histórico de Abrantes, num lote estreito e profundo. Ao edifício existente foram acrescidos dois pisos ligados por uma escada interior.",
+            "imgs": [
+                require("../data/img/itinerario/10/it_101.jpg")
+            ]
+        },
+        {
+            "id": 6,
             "title": "R. Nossa Sra. da Conceição",
             "year": "1923",
             "address": "R. Nossa Sra. da Conceição",
@@ -66,7 +97,22 @@ export const dados = [
             ]
         },
         {
-            "id": 5,
+            "id": 7,
+            "title": "Cemitério de S. Miguel do Rio Torto",
+            "year": "1924",
+            "address": "Cemitério de S. Miguel do Rio Torto, Carvalhal",
+            "coords": [
+                39.418613,
+                -8.210413
+            ],
+            "typology": "Arquitetura funerária",
+            "info": "Este mausoléu, foi erigido em memória de João Augusto da Silva Martins, falecido em 1924, que foi uma figura proeminente em Carvalhal (Freguesia de S. Miguel do Rio Torto), onde mantinha em funcionamento a Companhia de Moagem de Abrantes, inaugurada em 1903. O edifício, em estilo austero, com formas clássicas, é composto por dois corpos com volumes diferenciados: o primeiro corresponde a um pórtico cuja entrada é flanqueada por duas colunas, e que antecede o segundo corpo, da capela, espaço de planta longitudinal, simples e com cobertura de duas águas, iluminado por óculo na fachada principal e fresta no muro oposto.",
+            "imgs": [
+                require("../data/img/itinerario/18/it_181.jpeg")
+            ]
+        },
+        {
+            "id": 8,
             "title": "Rua de São Pedro",
             "year": "1924",
             "address": "Rua de S. Pedro, nº 8",
@@ -82,7 +128,7 @@ export const dados = [
             ]
         },
         {
-            "id": 6,
+            "id": 9,
             "title": "Rua Dom Afonso Henriques",
             "year": "1924 e 1948",
             "address": "Rua D. Afonso Henriques, nº 25",
@@ -99,7 +145,7 @@ export const dados = [
             ]
         },
         {
-            "id": 7,
+            "id": 10,
             "title": "Largo General Avelar Machado",
             "year": "1928",
             "address": "Largo General Avelar Machado",
@@ -116,7 +162,7 @@ export const dados = [
             ]
         },
         {
-            "id": 8,
+            "id": 11,
             "title": "Rua Tenente Valadim",
             "year": "1929 e 1963",
             "address": "Rua Tenente Valadim, nº 3 e 5",
@@ -132,38 +178,7 @@ export const dados = [
             ]
         },
         {
-            "id": 9,
-            "title": "Rua do Arcediago",
-            "year": "1923",
-            "address": "Rua do Arcediago, nº 19",
-            "coords": [
-                39.462754, 
-				-8.196875
-            ],
-            "typology": "Habitação Unifamiliar",
-            "info": "O projeto deste edifício corresponde a uma habitação de carácter urbyear, que se desenvolve em dois pisos, e que apresenta uma loggia aberta no primeiro piso, em arcada tripla, sobre a Rua do Arcediago.",
-            "imgs": [
-                require("../data/img/itinerario/9/it_091.jpg"),
-                require("../data/img/itinerario/9/it_092.jpg")
-            ]
-        },
-        {
-            "id": 10,
-            "title": "Rua General Manuel António Mourato",
-            "year": "1923",
-            "address": "Rua General Manuel António Mourato, nº 11",
-            "coords": [
-                39.463151,
-                -8.197996
-            ],
-            "typology": "Habitação Unifamiliar",
-            "info": "Este projeto de Raul Lino propôs a ampliação de um edifício térreo pré-existente e localizado no centro histórico de Abrantes, num lote estreito e profundo. Ao edifício existente foram acrescidos dois pisos ligados por uma escada interior.",
-            "imgs": [
-                require("../data/img/itinerario/10/it_101.jpg")
-            ]
-        },
-        {
-            "id": 11,
+            "id": 12,
             "title": "Rua José Estevão",
             "year": "1935",
             "address": "Rua José Estevão, nº 20",
@@ -179,7 +194,7 @@ export const dados = [
             ]
         },
         {
-            "id": 12,
+            "id": 13,
             "title": "Rua de Santa Isabel",
             "year": "1936",
             "address": "Rua de Santa Isabel nº 28 e 30",
@@ -195,7 +210,7 @@ export const dados = [
             ]
         },
         {
-            "id": 13,
+            "id": 14,
             "title": "Rua do Porto Taínho, Alferrarede",
             "year": "1938",
             "address": "Alferrarede, Rua do Porto Taínho, nº 24",
@@ -210,7 +225,7 @@ export const dados = [
             ]
         },
         {
-            "id": 14,
+            "id": 15,
             "title": "Rua Afonso Henriques",
             "year": "1938",
             "address": "Rua Afonso Henriques nº 9 a 11",
@@ -226,7 +241,7 @@ export const dados = [
             ]
         },
         {
-            "id": 15,
+            "id": 16,
             "title": "Afonso Henriques",
             "year": "1939",
             "address": "Afonso Henriques (ao lado do nº 25)",
@@ -241,7 +256,7 @@ export const dados = [
             ]
         },
         {
-            "id": 16,
+            "id": 17,
             "title": "Rua Afonso Henriques",
             "year": "1939 e 1941",
             "address": "Rua Afonso Henriques nº 13 a 15",
@@ -257,7 +272,7 @@ export const dados = [
             ]
         },
         {
-            "id": 17,
+            "id": 18,
             "title": "Rua 5 de outubro de 1910",
             "year": "1940",
             "address": "Rua 5 de outubro de 1910, nº 16",
@@ -270,21 +285,6 @@ export const dados = [
             "imgs": [
                 require("../data/img/itinerario/17/it_171.jpg"),
                 require("../data/img/itinerario/17/it_172.jpg")
-            ]
-        },
-        {
-            "id": 18,
-            "title": "Cemitério de S. Miguel do Rio Torto",
-            "year": "1924",
-            "address": "Cemitério de S. Miguel do Rio Torto, Carvalhal",
-            "coords": [
-                39.418613, 
-                -8.210413
-            ],
-            "typology": "Arquitetura funerária",
-            "info": "Este mausoléu, foi erigido em memória de João Augusto da Silva Martins, falecido em 1924, que foi uma figura proeminente em Carvalhal (Freguesia de S. Miguel do Rio Torto), onde mantinha em funcionamento a Companhia de Moagem de Abrantes, inaugurada em 1903. O edifício, em estilo austero, com formas clássicas, é composto por dois corpos com volumes diferenciados: o primeiro corresponde a um pórtico cuja entrada é flanqueada por duas colunas, e que antecede o segundo corpo, da capela, espaço de planta longitudinal, simples e com cobertura de duas águas, iluminado por óculo na fachada principal e fresta no muro oposto.",
-            "imgs": [
-                require("../data/img/itinerario/18/it_181.jpeg")
             ]
         }
     ]
