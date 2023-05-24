@@ -12,7 +12,7 @@ import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
 import { PermissionsAndroid, Platform } from 'react-native';
 import * as Permissions from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
-
+import itinerarios from '../Itinerarios';
 
 
 const styles = StyleSheet.create({
@@ -44,6 +44,39 @@ function getInitialState() {
     };
 }
 
+// Calculates the distance between two coordinates using the haversine formula
+function getDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the earth in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;  // deg2rad below
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a =
+      0.5 - Math.cos(dLat) / 2 +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      (1 - Math.cos(dLon)) / 2;
+
+    const distanceInKm = R * 2 * Math.asin(Math.sqrt(a)); // Distance in km
+    const distanceInMeters = distanceInKm * 1000; // Distance in meters
+    return distanceInMeters;
+}
+
+//Returns the id of closest building to the user
+function getClosest(userlat, userlon){
+    let distance = 10000000;
+    let building;
+    {itinerarios.map((item) => {
+        let lat1 = item.coords[0];
+        let lon1 = item.coords[1];
+        let tempdist = getDistance(lat1,lon1,userlat,userlon);
+        if(tempdist < distance){
+            distance = tempdist;
+            building = item.id;
+        }
+        
+    })}
+    console.log(building);
+    
+    return{building}
+}
  export default function Map({ navigation }) {
     const [currentLocation, setCurrentLocation] = useState(false);
     const [historyClicked, setHistoryClicked] = useState(true);
@@ -95,9 +128,9 @@ function getInitialState() {
                             setCurrentLocation({
                                 latitude: position.coords.latitude,
                                 longitude: position.coords.longitude,
-
+                                
                             });
-                        
+                            getClosest(position.coords.latitude,position.coords.longitude)
                         },
                         error => {
                             console.log('Error setting the location. Error:', error);
@@ -120,7 +153,6 @@ function getInitialState() {
         const handleHistoryPress = () => {
             setHistoryClicked((prevState) => !prevState);
         }
-
     return (
         <View style={{ height: '100%' }}>
             <MapView
