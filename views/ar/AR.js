@@ -77,7 +77,7 @@ export default function AR({ navigation }) {
                 <TouchableOpacity style={style.button} onPress={() => navigation.navigate('ARDetails')}>
                     <DetailsIcon width="50" height="50" />
                 </TouchableOpacity>
-                <TouchableOpacity style={style.button2} onPress={() => console.log('Video pressed')}>
+                <TouchableOpacity style={style.button2} onPress={() => navigation.navigate('ARVideo')}>
                     <VideoIcon width="50" height="50" />
                 </TouchableOpacity>
                 <ScrollView>
