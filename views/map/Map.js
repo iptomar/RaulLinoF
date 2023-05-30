@@ -129,8 +129,20 @@ function getInitialState() {
                 {/* Markers from the "itenerarios.js" file */}
                 <MarkersIt historyClicked={historyClicked} navigation={navigation}/>
                 <Polyline coordinates={[
-			{ latitude: 39.464991, longitude: -8.197546 },
-			{ latitude: 39.418613, longitude: -8.210413 }
+			{ latitude: 39.463440, longitude: -8.201998 },
+			{ latitude: 39.463966, longitude: -8.200576 },
+            { latitude: 39.463900, longitude: -8.200410 },
+            { latitude: 39.464044, longitude: -8.199385 },
+            { latitude: 39.463962, longitude: -8.199230 },
+            { latitude: 39.463610, longitude: -8.198999 },
+            { latitude: 39.463440, longitude: -8.198978 },
+            { latitude: 39.463088, longitude: -8.198270 },
+            { latitude: 39.462902, longitude: -8.197911 },
+            { latitude: 39.462598, longitude: -8.198416 },
+            { latitude: 39.462151, longitude: -8.198904 },
+            { latitude: 39.461834, longitude: -8.199650 },
+            { latitude: 39.461248, longitude: -8.199443 },
+            { latitude: 39.461343, longitude: -8.198719 }
             ]} 
             strokeWidth={5} 
             strokeColor="#00FF00" 
