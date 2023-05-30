@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Button} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 //markers
 import MarkerMyLocal from '../../data/img/views/mapa/currentPositionCircle.svg';
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
 });
+
 // Returns the initial map state (Abrantes)
 function getInitialState() {
     return {
@@ -80,145 +81,104 @@ function getClosest(userlat, userlon){
     const [currentLocation, setCurrentLocation] = useState(false);
     const [historyClicked, setHistoryClicked] = useState(true);
 
-// Calculates the distance between two coordinates using the haversine formula
-function getDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // Radius of the earth in km
-    const dLat = (lat2 - lat1) * Math.PI / 180;  // deg2rad below
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-    const a =
-      0.5 - Math.cos(dLat) / 2 +
-      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-      (1 - Math.cos(dLon)) / 2;
+    //for the buttons on the top right corner
+    useEffect(() => {
+        //...
+      }, []);
 
-    const distanceInKm = R * 2 * Math.asin(Math.sqrt(a)); // Distance in km
-    const distanceInMeters = distanceInKm * 1000; // Distance in meters
-    return distanceInMeters;
-}
-
-
-export default function Map({ navigation }) {
-    const [distance, setDistance] = React.useState(null);
-    const [point1, setPoint1] = React.useState(null);
-    const [point2, setPoint2] = React.useState(null);
-    const [selectedMarker, setSelectedMarker] = React.useState(null);
-    const [markers, setMarkers] = React.useState([
-        {
-            title: "Ponto A",
-            description: "A",
-            coordinate: {
-                latitude: 39.461152, 
-                longitude: -8.189
-            },
-            pinColor: "red",
-            isSelected: false
-        },
-        {
-            title: "Ponto B",
-            description: "B",
-            coordinate: {
-                latitude: 39.4705,
-                longitude: -8.2099
-            },
-            pinColor: "blue",
-            isSelected: false
-        },
-        {
-            title: "Ponto C",
-            description: "C",
-            coordinate: {
-                latitude: 39.4905,
-                longitude: -8.2099
-            },
-            pinColor: "blue",
-            isSelected: false
-        }
-        ,
-        {
-            title: "Ponto D",
-            description: "D",
-            coordinate: {
-                latitude: 39.4805,
-                longitude: -8.2099
-            },
-            pinColor: "blue",
-            isSelected: false
-        }
-    ]);
-
-    const handleMarkerPress = (index) => {
-        const newMarkers = [...markers];
-        newMarkers[index].isSelected = !newMarkers[index].isSelected;
-        setMarkers(newMarkers);
-            
-        if (newMarkers[index].isSelected) {
-            setSelectedMarker(index);
-        } else {
-            setSelectedMarker(null);
-
-        }
-
-        //if (newMarkers[index].isSelected) {
-        //    alert(newMarkers[index].title);
-        //  }
-    };
+    //permissoons for the location - granted or not?
+    useEffect(() => {
+        const checkLocationPermission = async () => {
+            if (Platform.OS === 'android') {
+                const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+                {
+                    title: 'Location Permission Required',
+                    message: 'This app requires access to your location.',
+                },
+                );
+                if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                    // console.log('Location permission granted ');
+                } else {
+                    // console.log('Location permission denied');
+                }
+            }
+             else if (Platform.OS === 'ios') {
+                Geolocation.requestAuthorization();
+            } 
+        };
     
-    const handleResetPress = () => {
-        const newMarkers = markers.map(marker => ({...marker, isSelected: false}));
-        setMarkers(newMarkers);
-        setDistance(null);
-        setPoint1(null);
-        setPoint2(null);
-        setSelectedMarker(null);
-    };
+        checkLocationPermission();
+       
+    }, []);
 
-      
+    
 
-React.useEffect(() => {
-    const selectedMarkers = markers.filter((marker) => marker.isSelected);
-    if (selectedMarkers.length >= 2) {
-        const lat1 = selectedMarkers[0].coordinate.latitude;
-        const long1 = selectedMarkers[0].coordinate.longitude;
-        const lat2 = selectedMarkers[1].coordinate.latitude;
-        const long2 = selectedMarkers[1].coordinate.longitude;   
-        const distance = getDistance(lat1, long1, lat2, long2);
-        setDistance(Number(distance.toFixed(0))); 
-        setPoint1(selectedMarkers[0].title);
-        setPoint2(selectedMarkers[1].title);
-    } else {
-        setDistance(null);
-        setPoint1(null);
-        setPoint2(null);
-    }
-}, [markers]);
+    //get the current location of the phone
+    useEffect(() => {
+            
+        const getCurrentLocation = async () => {
+            try {
+                const granted = await PermissionsAndroid.check(
+                    PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+                );
+                if (granted) {
+                    Geolocation.getCurrentPosition(
+                        position => {
+                            setCurrentLocation({
+                                latitude: position.coords.latitude,
+                                longitude: position.coords.longitude,
+                                
+                            });
+                            getClosest(position.coords.latitude,position.coords.longitude)
+                        },
+                        error => {
+                            // console.log('Error setting the location. Error:', error);
+                        },
+                        // precisao do GPS 
+                        {enableHighAccuracy: false, timeout: 15000, maximumAge: 10000 },
+                     
+                );
+                } else {
+                // console.log('Location permission denied');
+                }
+            } catch (err) {
+                console.warn(err);
+            }
+            };
+        
+            getCurrentLocation();
+        }, []);
 
-return (
-    <View style={{flex: 1}}>
-        <MapView
-            style={{flex: 1}}
-            initialRegion={getInitialState()}>
-            {markers.map((marker, index) => (
-                <Marker
-                    key={index}
-                    coordinate={marker.coordinate}
-                    //title={selectedMarker === index ? marker.title : null}
-                    description={marker.description}
-                    pinColor={marker.isSelected ? "green" : marker.pinColor}
-                    onPress={() => handleMarkerPress(index)}
-                />
-            ))}
-        </MapView>
-        {distance !== null && (
-                    <View style={{flexDirection: 'row'}}>
-                    <View style={{backgroundColor: 'white', padding: 10, flex: 1}}>
-                      <Text>
-                        Distância entre {point1} e {point2}: {distance} metros
-                      </Text>
-                    </View>
-                    <View style={{backgroundColor: 'white', padding: 10}}>
-                      <Button title="Reset" onPress={handleResetPress} color="#008080" />
-                    </View>
-                  </View> 
-        )}
-    </View>
-);
+        const handleHistoryPress = () => {
+            setHistoryClicked((prevState) => !prevState);
+        }
+    return (
+        <View style={{ height: '100%' }}>
+            <MapView
+                style={{height: '100%'}}
+                initialRegion={getInitialState()}>
+                {currentLocation && (
+                    <Marker 
+                        coordinate={currentLocation} 
+                        title  ="My Location">
+                       {console.log("Minha localização: ",currentLocation)}
+                       <MarkerIconYellow width="50" height="50" />
+                    </Marker>
+                )}
+                {/* Markers from the "itenerarios.js" file */}
+                <MarkersIt historyClicked={historyClicked} navigation={navigation}/>
+            </MapView  >
+            {/* on screen buttons */}
+            <TouchableOpacity style={styles.button}
+                onPress={() => console.log('Button pressed')}
+                >
+                <MapItinerary width="50" height="50" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button2}>
+                <MapHistory width="50" height="50" onPress={handleHistoryPress}/>
+            </TouchableOpacity>
+        </View>
+    );
 }
+ 
