@@ -1,38 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Button} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-//markers
-import MarkerMyLocal from '../../data/img/views/mapa/currentPositionCircle.svg';
-import MapItinerary from '../../data/img/views/mapa/itinerarioIcon.svg';
-import MapHistory from '../../data/img/views/mapa/historiaOnClickIcon.svg';
-import MarkersIt from './MarkersIt';
-import MapView, { Marker, Callout  } from '@mvits/react-native-maps-osmdroid';
-import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
-//location stuff
-import { PermissionsAndroid, Platform } from 'react-native';
-import * as Permissions from 'react-native-permissions';
-import Geolocation from '@react-native-community/geolocation';
-import itinerarios from '../Itinerarios';
+import * as React from 'react';
+import { View, Text, TouchableOpacity  } from 'react-native';
+import MapView, {Marker} from '@mvits/react-native-maps-osmdroid';
+import itinerarios from '../../data/json/itinerarios.json';
+import { Button } from 'react-native';
 
-
-const styles = StyleSheet.create({
-    button: {
-        position: 'absolute',
-        top: 20,
-        right: 0,
-        backgroundColor: '#272133',
-        padding: 10,
-        borderRadius: 5,
-    },
-    button2: {
-        position: 'absolute',
-        top: 80,
-        right: 0,
-        backgroundColor: '#272133',
-        padding: 10,
-        borderRadius: 5,
-    },
-});
 // Returns the initial map state (Abrantes)
 function getInitialState() {
     return {
@@ -43,42 +14,22 @@ function getInitialState() {
     };
 }
 
-// Calculates the distance between two coordinates using the haversine formula
-function getDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // Radius of the earth in km
-    const dLat = (lat2 - lat1) * Math.PI / 180;  // deg2rad below
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-    const a =
-      0.5 - Math.cos(dLat) / 2 +
-      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-      (1 - Math.cos(dLon)) / 2;
-
-    const distanceInKm = R * 2 * Math.asin(Math.sqrt(a)); // Distance in km
-    const distanceInMeters = distanceInKm * 1000; // Distance in meters
-    return distanceInMeters;
+// Returns the number of buildings
+function numItinerarios(){
+    return itinerarios.dados.length;
 }
 
-//Returns the id of closest building to the user
-function getClosest(userlat, userlon){
-    let distance = 10000000;
-    let building;
-    {itinerarios.map((item) => {
-        let lat1 = item.coords[0];
-        let lon1 = item.coords[1];
-        let tempdist = getDistance(lat1,lon1,userlat,userlon);
-        if(tempdist < distance){
-            distance = tempdist;
-            building = item.id;
-        }
+// Sets a Map Marker of a building
+function setMarker(coordinate, title, description){
+
+}
+
+// Loads all buildings into Markers
+function loadItinerarios(){
+    for(let i=0; i<numItinerarios(); i++){
         
-    })}
-    console.log(building);
-    
-    return{building}
+    }
 }
- export default function Map({ navigation }) {
-    const [currentLocation, setCurrentLocation] = useState(false);
-    const [historyClicked, setHistoryClicked] = useState(true);
 
 // Calculates the distance between two coordinates using the haversine formula
 function getDistance(lat1, lon1, lat2, lon2) {

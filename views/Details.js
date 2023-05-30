@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, Text, StyleSheet, ScrollView, Button, Image } from 'react-native';
 
 //json data
-import dados from './Itinerarios';
+import dados from './itinerarios';
 
 //css
 const styles = StyleSheet.create({
@@ -50,7 +50,7 @@ export default function Details({ navigation, route }) {
         {dados.map((item) => {
             if(item.id === itemID){
                 return(
-                    <View key={item.id}>
+                    <View >
                         <Text style={styles.title} selectable={true}>{item.title}</Text>
                         <View style={styles.content}>
                             {item.imgs.map((img, index)=>{
