@@ -6,7 +6,7 @@ import MarkerMyLocal from '../../data/img/views/mapa/currentPositionCircle.svg';
 import MapItinerary from '../../data/img/views/mapa/itinerarioIcon.svg';
 import MapHistory from '../../data/img/views/mapa/historiaOnClickIcon.svg';
 import MarkersIt from './MarkersIt';
-import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
+import MapView, { Marker, Callout, Polyline } from '@mvits/react-native-maps-osmdroid';
 //location stuff
 import { PermissionsAndroid, Platform } from 'react-native';
 import * as Permissions from 'react-native-permissions';
@@ -124,9 +124,17 @@ function getInitialState() {
                         >
                         <MarkerMyLocal width="50" height="50"/>
                     </Marker>
+                    
                 )}
                 {/* Markers from the "itenerarios.js" file */}
                 <MarkersIt historyClicked={historyClicked} navigation={navigation}/>
+                <Polyline coordinates={[
+			{ latitude: 39.464991, longitude: -8.197546 },
+			{ latitude: 39.418613, longitude: -8.210413 }
+            ]} 
+            strokeWidth={5} 
+            strokeColor="#00FF00" 
+            />
             </MapView  >
             {/* on screen buttons */}
             <TouchableOpacity style={styles.button}
