@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Text, Button, TouchableOpacity, ScrollView, Image } from 'react-native';
-import itinerarios from '../Itinerarios';
+import itinerarios from '../itinerarios';
 import MapHistory from '../../data/img/views/adicionar.svg';
 import MapHistClose from '../../data/img/views/fechar.svg';
 

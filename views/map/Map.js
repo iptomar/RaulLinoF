@@ -12,7 +12,7 @@ import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
 import { PermissionsAndroid, Platform } from 'react-native';
 import * as Permissions from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
-import itinerarios from '../Itinerarios';
+import itinerarios from '../itinerarios';
 
 
 const styles = StyleSheet.create({
