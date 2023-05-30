@@ -98,9 +98,9 @@ function getClosest(userlat, userlon){
                 },
                 );
                 if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                    console.log('Location permission granted - Chego aqui ');
+                    // console.log('Location permission granted ');
                 } else {
-                    console.log('Location permission denied');
+                    // console.log('Location permission denied');
                 }
             }
              else if (Platform.OS === 'ios') {
@@ -133,14 +133,14 @@ function getClosest(userlat, userlon){
                             getClosest(position.coords.latitude,position.coords.longitude)
                         },
                         error => {
-                            console.log('Error setting the location. Error:', error);
+                            // console.log('Error setting the location. Error:', error);
                         },
                         // precisao do GPS 
                         {enableHighAccuracy: false, timeout: 15000, maximumAge: 10000 },
                      
                 );
                 } else {
-                console.log('Location permission denied');
+                // console.log('Location permission denied');
                 }
             } catch (err) {
                 console.warn(err);
@@ -162,7 +162,7 @@ function getClosest(userlat, userlon){
                     <Marker 
                         coordinate={currentLocation} 
                         title  ="My Location">
-                       {console.log("Minha localizacaao Fim  ",currentLocation)}
+                       {console.log("Minha localização: ",currentLocation)}
                        <MarkerIconYellow width="50" height="50" />
                     </Marker>
                 )}

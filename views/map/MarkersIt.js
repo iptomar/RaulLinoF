@@ -53,7 +53,9 @@ export default function MarkersIt({ navigation, historyClicked }){
       
 
     const handleAddPress = (itemID) => {
+        // mudar função para adicionar aos itinerários
         console.log('AddPressed');
+
     }
 
     //navigation to history is the button of the history is pressed
