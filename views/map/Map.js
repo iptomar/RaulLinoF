@@ -164,6 +164,19 @@ function getInitialState() {
             strokeWidth={5} 
             strokeColor="#00FF00" 
             />
+            <Polyline coordinates={[
+			{ latitude: 39.463932, longitude: -8.200645 },
+			{ latitude: 39.463985, longitude: -8.200482 },
+            { latitude: 39.464439, longitude: -8.199279 },
+            { latitude: 39.464228, longitude: -8.198771 },
+            { latitude: 39.464082, longitude: -8.198384 },
+            { latitude: 39.464076, longitude: -8.197974 },
+            { latitude: 39.464252, longitude: -8.197625 },
+            { latitude: 39.464439, longitude: -8.197333 }
+            ]} 
+            strokeWidth={5} 
+            strokeColor="#00FF00" 
+            />
             </MapView  >
             {/* on screen buttons */}
             <TouchableOpacity style={styles.button}
