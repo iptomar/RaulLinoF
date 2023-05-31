@@ -99,10 +99,10 @@ export default function Home({navigation}) {
                 {/* loop to see each item on Home */}
                 {dados.map((item) => {
                 return(
-                    <View style={styles.content}>
+                    <View style={styles.content} key={item.id}>
                         <Image style={styles.image} source={item.imgs[0]} /> 
                         <View style={styles.content2}>
-                            <Text style={styles.description} selectable={true} key={item.id}>{getYearSubstring(item.year)} {'\n'}{item.title}{'\n'}{item.typology}</Text>
+                            <Text style={styles.description} selectable={true}>{getYearSubstring(item.year)} {'\n'}{item.title}{'\n'}{item.typology}</Text>
                             {/* button to see details */}
                             <Button style={styles.image}
                                 title='Detalhes'

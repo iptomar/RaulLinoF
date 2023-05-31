@@ -98,7 +98,7 @@ function getClosest(userlat, userlon){
                 },
                 );
                 if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                    console.log('Location permission granted - Chego aqui ');
+                    console.log('Location permission granted');
                 } else {
                     console.log('Location permission denied');
                 }
@@ -136,7 +136,7 @@ function getClosest(userlat, userlon){
                             console.log('Error setting the location. Error:', error);
                         },
                         // precisao do GPS 
-                        {enableHighAccuracy: false, timeout: 15000, maximumAge: 10000 },
+                        {enableHighAccuracy: false, timeout: 30000, maximumAge: 10000 },
                      
                 );
                 } else {
@@ -162,7 +162,7 @@ function getClosest(userlat, userlon){
                     <Marker 
                         coordinate={currentLocation} 
                         title  ="My Location">
-                       {console.log("Minha localizacaao Fim  ",currentLocation)}
+                       {console.log("Minha localização: ",currentLocation)}
                        <MarkerIconYellow width="50" height="50" />
                     </Marker>
                 )}
@@ -171,7 +171,7 @@ function getClosest(userlat, userlon){
             </MapView  >
             {/* on screen buttons */}
             <TouchableOpacity style={styles.button}
-                onPress={() => console.log('Button pressed')}
+                onPress={() => console.log('Button pressed - adicionar ao itinerario')}
                 >
                 <MapItinerary width="50" height="50" />
             </TouchableOpacity>
