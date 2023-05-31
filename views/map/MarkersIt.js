@@ -1,7 +1,7 @@
 import MapView, { Marker, Callout } from '@mvits/react-native-maps-osmdroid';
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet,TouchableOpacity} from 'react-native';
-import itinerarios from '../Itinerarios';
+import itinerarios from '../itinerarios';
 import MarkerIcon from '../../data/img/views/mapa/marker.svg';
 import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
 import PlusBtn from '../../data/img/views/adicionarPreto.svg';
@@ -53,9 +53,7 @@ export default function MarkersIt({ navigation, historyClicked }){
       
 
     const handleAddPress = (itemID) => {
-        // mudar função para adicionar aos itinerários
         console.log('AddPressed');
-
     }
 
     //navigation to history is the button of the history is pressed

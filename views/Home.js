@@ -3,7 +3,7 @@ import { Image, View, Text, ScrollView, StyleSheet, Button } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
 
 //data from json
-import dados from './Itinerarios';
+import dados from './itinerarios';
 
 //css
 const styles = StyleSheet.create({
@@ -99,7 +99,7 @@ export default function Home({navigation}) {
                 {/* loop to see each item on Home */}
                 {dados.map((item) => {
                 return(
-                    <View style={styles.content} key={item.id}>
+                    <View style={styles.content}>
                         <Image style={styles.image} source={item.imgs[0]} /> 
                         <View style={styles.content2}>
                             <Text style={styles.description} selectable={true} key={item.id}>{getYearSubstring(item.year)} {'\n'}{item.title}{'\n'}{item.typology}</Text>

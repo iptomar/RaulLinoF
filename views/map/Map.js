@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 //markers
+import MarkerMyLocal from '../../data/img/views/mapa/currentPositionCircle.svg';
 import MapItinerary from '../../data/img/views/mapa/itinerarioIcon.svg';
 import MapHistory from '../../data/img/views/mapa/historiaOnClickIcon.svg';
 import MarkersIt from './MarkersIt';
@@ -8,8 +10,9 @@ import MapView, { Marker, Callout  } from '@mvits/react-native-maps-osmdroid';
 import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
 //location stuff
 import { PermissionsAndroid, Platform } from 'react-native';
+import * as Permissions from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
-import itinerarios from '../Itinerarios';
+import itinerarios from '../itinerarios';
 
 
 const styles = StyleSheet.create({
@@ -95,9 +98,9 @@ function getClosest(userlat, userlon){
                 },
                 );
                 if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                    // console.log('Location permission granted ');
+                    console.log('Location permission granted - Chego aqui ');
                 } else {
-                    // console.log('Location permission denied');
+                    console.log('Location permission denied');
                 }
             }
              else if (Platform.OS === 'ios') {
@@ -130,14 +133,14 @@ function getClosest(userlat, userlon){
                             getClosest(position.coords.latitude,position.coords.longitude)
                         },
                         error => {
-                            // console.log('Error setting the location. Error:', error);
+                            console.log('Error setting the location. Error:', error);
                         },
                         // precisao do GPS 
                         {enableHighAccuracy: false, timeout: 15000, maximumAge: 10000 },
                      
                 );
                 } else {
-                // console.log('Location permission denied');
+                console.log('Location permission denied');
                 }
             } catch (err) {
                 console.warn(err);
@@ -159,7 +162,7 @@ function getClosest(userlat, userlon){
                     <Marker 
                         coordinate={currentLocation} 
                         title  ="My Location">
-                       {console.log("Minha localização: ",currentLocation)}
+                       {console.log("Minha localizacaao Fim  ",currentLocation)}
                        <MarkerIconYellow width="50" height="50" />
                     </Marker>
                 )}
