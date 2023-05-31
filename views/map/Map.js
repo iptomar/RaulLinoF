@@ -144,8 +144,8 @@ function getInitialState() {
             { latitude: 39.461248, longitude: -8.199443 },
             { latitude: 39.461343, longitude: -8.198719 }
             ]} 
-            strokeWidth={5} 
-            strokeColor="#00FF00" 
+            strokeWidth={10} 
+            strokeColor="#2E8B57" 
             />
             <Polyline coordinates={[
 			{ latitude: 39.461275, longitude: -8.198590 },
@@ -161,7 +161,7 @@ function getInitialState() {
             { latitude: 39.464500, longitude: -8.197402 },
             { latitude: 39.465117, longitude: -8.197818 }
             ]} 
-            strokeWidth={5} 
+            strokeWidth={10} 
             strokeColor="#00FF00" 
             />
             <Polyline coordinates={[
@@ -174,8 +174,8 @@ function getInitialState() {
             { latitude: 39.464252, longitude: -8.197625 },
             { latitude: 39.464439, longitude: -8.197333 }
             ]} 
-            strokeWidth={5} 
-            strokeColor="#00FF00" 
+            strokeWidth={10} 
+            strokeColor="#ffae42" 
             />
             </MapView  >
             {/* on screen buttons */}
