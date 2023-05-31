@@ -112,6 +112,8 @@ function getInitialState() {
             setHistoryClicked((prevState) => !prevState);
         }
 
+        const [polylinesVisible, setPolylinesVisible] = useState(false);
+
     return (
         <View style={{ height: '100%' }}>
             <MapView
@@ -128,6 +130,9 @@ function getInitialState() {
                 )}
                 {/* Markers from the "itenerarios.js" file */}
                 <MarkersIt historyClicked={historyClicked} navigation={navigation}/>
+                
+                {polylinesVisible && (
+                <>
                 <Polyline coordinates={[
 			{ latitude: 39.463440, longitude: -8.201998 },
 			{ latitude: 39.463966, longitude: -8.200576 },
@@ -146,6 +151,7 @@ function getInitialState() {
             ]} 
             strokeWidth={10} 
             strokeColor="#2E8B57" 
+            precision={10}
             />
             <Polyline coordinates={[
 			{ latitude: 39.461275, longitude: -8.198590 },
@@ -163,6 +169,7 @@ function getInitialState() {
             ]} 
             strokeWidth={10} 
             strokeColor="#00008b" 
+            precision={10}
             />
             <Polyline coordinates={[
 			{ latitude: 39.463932, longitude: -8.200645 },
@@ -176,11 +183,15 @@ function getInitialState() {
             ]} 
             strokeWidth={10} 
             strokeColor="#ffae42" 
+            precision={10}
             />
+            </>
+            )}
             </MapView  >
             {/* on screen buttons */}
             <TouchableOpacity style={styles.button}
-                onPress={() => console.log('Button pressed')}
+                //onPress={() => console.log('Button pressed')}
+                onPress={() => setPolylinesVisible(prevState => !prevState)}
                 >
                 <MapItinerary width="50" height="50" />
             </TouchableOpacity>
