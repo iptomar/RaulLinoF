@@ -150,8 +150,7 @@ function getInitialState() {
             { latitude: 39.461343, longitude: -8.198719 }
             ]} 
             strokeWidth={10} 
-            strokeColor="#2E8B57" 
-            precision={10}
+            strokeColor="rgba(46, 139, 87, 0.5)" 
             />
             <Polyline coordinates={[
 			{ latitude: 39.461275, longitude: -8.198590 },
@@ -167,9 +166,8 @@ function getInitialState() {
             { latitude: 39.464500, longitude: -8.197402 },
             { latitude: 39.465117, longitude: -8.197818 }
             ]} 
-            strokeWidth={10} 
-            strokeColor="#00008b" 
-            precision={10}
+            strokeWidth={10}  
+            strokeColor="rgba(0, 0, 139, 0.5)"
             />
             <Polyline coordinates={[
 			{ latitude: 39.463932, longitude: -8.200645 },
@@ -181,9 +179,8 @@ function getInitialState() {
             { latitude: 39.464252, longitude: -8.197625 },
             { latitude: 39.464439, longitude: -8.197333 }
             ]} 
-            strokeWidth={10} 
-            strokeColor="#ffae42" 
-            precision={10}
+            strokeWidth={10}  
+            strokeColor="rgba(255, 174, 66, 0.5)"
             />
             </>
             )}
