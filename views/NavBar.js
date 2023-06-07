@@ -36,6 +36,7 @@ export default function Navigation(){
   );
 }
 
+// Navigation to the components that aren't in the Navbar
 const HomeStack = () => {
   return(
     <Stack.Navigator>
@@ -53,6 +54,8 @@ const MapStack = () => {
     </Stack.Navigator>
   )
 }
+
+// Navbar navigation
 export function NavBar() {
   return(
     // <NavigationContainer>

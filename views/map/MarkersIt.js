@@ -7,6 +7,7 @@ import MarkerIconYellow from '../../data/img/views/mapa/selectedMarker.svg';
 import PlusBtn from '../../data/img/views/adicionarPreto.svg';
 import MapHis from './History';
 
+// css
 const styles = StyleSheet.create({
     bubble: {
         height: '100%', 
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     },
   });
 
+// Markers and tooltips of the markers, displayed on top of the map
 export default function MarkersIt({ navigation, historyClicked }){
     const [markerStates, setMarkerStates] = useState({});
     const [selectedMarkersList, setSelectedMarkersList] = useState([]);
@@ -51,7 +53,7 @@ export default function MarkersIt({ navigation, historyClicked }){
         });
       };
       
-
+    // Add place to the itinerary
     const handleAddPress = (itemID) => {
         console.log('AddPressed');
     }
@@ -70,20 +72,24 @@ export default function MarkersIt({ navigation, historyClicked }){
         <>
             {/* on screen buttons */}
 
+            {/* Loop to display all the markers on top of the map */}
             {itinerarios.map((item) => {
                 const isSelected = markerStates[item.id];
                 return(
+                    // Markers of the Places on the Map
                     <Marker
                         key={item.id}
                         coordinate={{latitude: item.coords[0], longitude: item.coords[1]}}
                         onPress={() => handleMarkerPress(item.id)}
                         calloutEnabled={true}
                     >   
+                        {/* Change the color of the marker if it's selected or not */}
                         {isSelected ? (
                             <MarkerIconYellow width="50" height="50" />
                         ) : (
                             <MarkerIcon width="50" height="50" />
                         )}
+                        {/* Tooltip with small description of the marker clicked */}
                         <Callout tooltip>
                             <View style={styles.bubble}>
                                 <Text style={styles.bubbleText}>{item.title.toUpperCase()}</Text>

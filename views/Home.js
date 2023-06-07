@@ -62,16 +62,19 @@ const styles = StyleSheet.create({
 export default function Home({navigation}) {
     const [orderBy, setOrderBy] = useState('default');
 
+    // Filter to order the places by year
     const handleOrderByChange = (value) => {
         setOrderBy(value);
       };
     
+    // If the year of building has 2 DatePickerIOS, the first date is beign considered
     const getYearSubstring = (year) => {
         return year.substring(0, 4);
     };
 
     let filteredDados = dados;
 
+    // order by year - ascending or descending
     if (orderBy === 'yearAscending') {
         filteredDados = filteredDados.sort((a, b) => a.year.localeCompare(b.year));
     } else if (orderBy === 'yearDescending') {
@@ -90,6 +93,7 @@ export default function Home({navigation}) {
                             selectedValue={orderBy}
                             onValueChange={handleOrderByChange}
                         >
+                            {/* Names of the Picker that appear on the App */}
                             <Picker.Item label="Ordenar por" value="default" />
                             <Picker.Item label="Ano - Ascendente" value="yearAscending" />
                             <Picker.Item label="Ano - Decrescente" value="yearDescending" />
@@ -100,10 +104,11 @@ export default function Home({navigation}) {
                 {dados.map((item) => {
                 return(
                     <View style={styles.content} key={item.id}>
+                        {/* Image and data about the place (resumed) */}
                         <Image style={styles.image} source={item.imgs[0]} /> 
                         <View style={styles.content2}>
                             <Text style={styles.description} selectable={true}>{getYearSubstring(item.year)} {'\n'}{item.title}{'\n'}{item.typology}</Text>
-                            {/* button to see details */}
+                            {/* button to see the details page of the place selected */}
                             <Button style={styles.image}
                                 title='Detalhes'
                                 color={'#078C6B'}

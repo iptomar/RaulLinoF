@@ -14,7 +14,7 @@ import * as Permissions from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
 import itinerarios from '../itinerarios';
 
-
+// css
 const styles = StyleSheet.create({
     button: {
         position: 'absolute',
@@ -88,8 +88,10 @@ function getClosest(userlat, userlon){
 
     //permissoons for the location - granted or not?
     useEffect(() => {
+        // Check if the App has permission to access the phone of the user location
         const checkLocationPermission = async () => {
             if (Platform.OS === 'android') {
+                // Message to inform the user that the permission must be given on the phone if the users wants to see where he is on the map
                 const granted = await PermissionsAndroid.request(
                 PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
                 {
@@ -97,17 +99,19 @@ function getClosest(userlat, userlon){
                     message: 'This app requires access to your location.',
                 },
                 );
+                // See if the permision was given to the Aoo to access the phone location
                 if (granted === PermissionsAndroid.RESULTS.GRANTED) {
                     console.log('Location permission granted');
                 } else {
                     console.log('Location permission denied');
                 }
             }
+            // Request requestAuthorization
              else if (Platform.OS === 'ios') {
                 Geolocation.requestAuthorization();
             } 
         };
-    
+        // Check again if the user has given the permission to access the location
         checkLocationPermission();
        
     }, []);
@@ -119,10 +123,12 @@ function getClosest(userlat, userlon){
             
         const getCurrentLocation = async () => {
             try {
+                // Get ther permission to access the location
                 const granted = await PermissionsAndroid.check(
                     PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
                 );
                 if (granted) {
+                    // If the permissions were getActiveChildNavigationOptions, get the coordinates of the user's phone
                     Geolocation.getCurrentPosition(
                         position => {
                             setCurrentLocation({
@@ -132,37 +138,44 @@ function getClosest(userlat, userlon){
                             });
                             getClosest(position.coords.latitude,position.coords.longitude)
                         },
+                        //Log the error if it wasn't possible to get the location even with the permission
                         error => {
                             console.log('Error setting the location. Error:', error);
                         },
-                        // precisao do GPS 
+                        // precision of the GPS 
                         {enableHighAccuracy: false, timeout: 30000, maximumAge: 10000 },
                      
                 );
                 } else {
+                //Log the error if the permissions weren't given by the user
                 console.log('Location permission denied');
                 }
             } catch (err) {
+                // Catch ohter errors
                 console.warn(err);
             }
             };
-        
+            //try to get the location again - after precision ends
             getCurrentLocation();
         }, []);
 
+        // Check if the user pressed the button to see the history of the selected markers
         const handleHistoryPress = () => {
             setHistoryClicked((prevState) => !prevState);
         }
+
     return (
         <View style={{ height: '100%' }}>
             <MapView
                 style={{height: '100%'}}
                 initialRegion={getInitialState()}>
                 {currentLocation && (
+                    // Marker for the current location of the user
                     <Marker 
                         coordinate={currentLocation} 
                         title  ="My Location">
-                       {console.log("Minha localização: ",currentLocation)}
+                        {/* Removed the log to see the location so the App isn't so slow */}
+                       {/* {console.log("Minha localização: ",currentLocation)} */}
                        <MarkerIconYellow width="50" height="50" />
                     </Marker>
                 )}
@@ -170,11 +183,13 @@ function getClosest(userlat, userlon){
                 <MarkersIt historyClicked={historyClicked} navigation={navigation}/>
             </MapView  >
             {/* on screen buttons */}
+            {/* Button to see the current itinerary */}
             <TouchableOpacity style={styles.button}
                 onPress={() => console.log('Button pressed - adicionar ao itinerario')}
                 >
                 <MapItinerary width="50" height="50" />
             </TouchableOpacity>
+            {/* Button to see the History of the selected places */}
             <TouchableOpacity style={styles.button2}>
                 <MapHistory width="50" height="50" onPress={handleHistoryPress}/>
             </TouchableOpacity>

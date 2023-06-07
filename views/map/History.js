@@ -4,7 +4,7 @@ import itinerarios from '../itinerarios';
 import MapHistory from '../../data/img/views/adicionar.svg';
 import MapHistClose from '../../data/img/views/fechar.svg';
 
-
+// css
 const styles = {
     content: {
         flexDirection: 'column',
@@ -64,6 +64,7 @@ const styles = {
     },
 }
 
+//Details Page of the markers selected on the Map
 export default function History({ navigation, route}) {
     const {selectedMarkersList} = route.params;
     const [selectedItem, setSelectedItem] = React.useState(null);
@@ -84,14 +85,15 @@ export default function History({ navigation, route}) {
 
     return (
         <ScrollView style={styles.content}>
+            {/* Header */}
             <Text style={styles.title}>MAPA INTERATIVO - HISTÓRIA</Text>
 
-                {/* show selected places */}
+                {/* show all the selected places */}
                 {filteredItinerarios.map(item => (
                     <View key={item.id} style={styles.content}>
                         <View style={styles.listPlaces}>
                             <Text style={styles.subtitle}>{item.year} - <Text style={styles.subtitle}>{item.title}</Text></Text>
-                            {/* open details */}
+                            {/* Button to open details */}
                             <TouchableOpacity>
                                 <MapHistory width="50" height="50" onPress={() => showDetails(item)}/>
                             </TouchableOpacity>
@@ -101,10 +103,12 @@ export default function History({ navigation, route}) {
                             <View style={styles.content}>
                             <Text style={styles.subtitle2}>{selectedItem.title}</Text>
                             <View style={styles.closeButton}>
+                                {/* First Image of the array of images for a specific place */}
                                 <Image style={styles.image} source={item.imgs[0]} /> 
                             </View>
                                 <View style={styles.content2}>
                                     <Text style={styles.description}>{selectedItem.info}</Text>
+                                    {/* Button to close the details */}
                                     <TouchableOpacity style={styles.closeButton}>
                                         <MapHistClose  width="50" height="50" onPress={() => closeDetails()}/>
                                     </TouchableOpacity>
@@ -113,6 +117,7 @@ export default function History({ navigation, route}) {
                         )}
                     </View>
                 ))}
+            {/* Button to go back to the Map */}
             <Button title='Voltar' onPress={()=> navigation.navigate('Map')} color={'#078C6B'}/>
         </ScrollView>
     );

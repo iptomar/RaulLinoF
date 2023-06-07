@@ -42,17 +42,20 @@ const styles = StyleSheet.create({
     }
   });
 
+// Details of the place selected on the Home page
 export default function Details({ navigation, route }) {
     const {itemID} = route.params;
 
     return (
         <ScrollView >
+        {/* Loop to see only the place that was selected on the Home page */}
         {dados.map((item) => {
             if(item.id === itemID){
                 return(
                     <View >
                         <Text style={styles.title} selectable={true}>{item.title}</Text>
                         <View style={styles.content}>
+                            {/* Loop to see all the images of the place */}
                             {item.imgs.map((img, index)=>{
                                 return(
                                     <View style={styles.contentImage} key={index}>
@@ -61,18 +64,21 @@ export default function Details({ navigation, route }) {
                                 );
                             })}
                         </View>
+                        {/* Data about the place */}
                         <Text style={styles.subtitle} selectable={true}>
                             Ano: {item.year}{'\n'}
                             Topologia: {item.typology}{'\n'}
                             Endereço: {item.address}{'\n'}
                             Coordenadas: {item.coords}{'\n'}
                             Descrição:</Text>
+                        {/* Long description of the place */}
                         <Text style={styles.description}>{item.info}</Text>
                     </View>
                     
                 );
             }
             })} 
+            {/* Button to return to the home page */}
             <Button title='Voltar' onPress={()=> navigation.navigate('Locais')} color={'#078C6B'}/>
         </ScrollView>
       );
