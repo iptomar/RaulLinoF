@@ -153,6 +153,17 @@ function getInitialState() {
             strokeColor="rgba(46, 139, 87, 0.5)" 
             />
             <Polyline coordinates={[
+			{ latitude: 39.4631, longitude: -8.19829 },
+            { latitude: 39.46319, longitude: -8.1981 },
+            { latitude: 39.46319, longitude: -8.19807 },
+            { latitude: 39.46318, longitude: -8.19805 },
+            { latitude: 39.46317, longitude: -8.19803 },
+            { latitude: 39.46314, longitude: -8.198 },
+            ]} 
+            strokeWidth={10} 
+            strokeColor="rgba(46, 139, 87, 0.5)" 
+            />
+            <Polyline coordinates={[
 			{ latitude: 39.461275, longitude: -8.198590 },
 			{ latitude: 39.461804, longitude: -8.198046 },
             { latitude: 39.461439, longitude: -8.197273 },
