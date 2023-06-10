@@ -155,8 +155,7 @@ function getInitialState() {
             <Polyline coordinates={[
 			{ latitude: 39.4631, longitude: -8.19829 },
             { latitude: 39.46319, longitude: -8.1981 },
-            { latitude: 39.46319, longitude: -8.19807 },
-            { latitude: 39.46318, longitude: -8.19805 },
+            { latitude: 39.46319, longitude: -8.19806 },
             { latitude: 39.46317, longitude: -8.19803 },
             { latitude: 39.46314, longitude: -8.198 },
             ]} 
@@ -183,7 +182,7 @@ function getInitialState() {
             <Polyline coordinates={[
 			{ latitude: 39.462591, longitude: -8.196302 },
             { latitude: 39.46261, longitude: -8.19622 },
-            { latitude: 39.46261, longitude: -8.19612 },
+            { latitude: 39.46262, longitude: -8.19612 },
             { latitude: 39.4628, longitude: -8.19612 },
             ]} 
             strokeWidth={10} 
