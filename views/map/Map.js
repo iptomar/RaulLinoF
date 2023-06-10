@@ -184,23 +184,41 @@ function getInitialState() {
             strokeColor="rgba(46, 139, 87, 0.5)" 
             />
             <Polyline coordinates={[
-			{ latitude: 39.461275, longitude: -8.198590 },
-			{ latitude: 39.461804, longitude: -8.198046 },
-            { latitude: 39.461439, longitude: -8.197273 },
-            { latitude: 39.461791, longitude: -8.196777 },
-            { latitude: 39.462100, longitude: -8.196195 },
-            { latitude: 39.462572, longitude: -8.196343 },
-            { latitude: 39.462591, longitude: -8.196302 },
-            { latitude: 39.463454, longitude: -8.196737 },
-            { latitude: 39.463814, longitude: -8.196968 },
-            { latitude: 39.464200, longitude: -8.197190 },
-            { latitude: 39.464500, longitude: -8.197402 },
-            { latitude: 39.465117, longitude: -8.197818 }
+			{ latitude: 39.46512, longitude: -8.19781 },
+			{ latitude: 39.46485, longitude: -8.19763 },
+            { latitude: 39.46453, longitude: -8.19742 },
+            { latitude: 39.46435, longitude: -8.1973 },
+			{ latitude: 39.4642, longitude: -8.19721 },
+            { latitude: 39.46394, longitude: -8.19705 },
+            { latitude: 39.46369, longitude: -8.19689 },
+			{ latitude: 39.46346, longitude: -8.19675 },
+            { latitude: 39.46311, longitude: -8.19658 },
+            { latitude: 39.46282, longitude: -8.19643 },
+			{ latitude: 39.4627, longitude: -8.19636 },
+            { latitude: 39.46263, longitude: -8.19632 },
+            { latitude: 39.46256, longitude: -8.19635 },
+			{ latitude: 39.46232, longitude: -8.19627 },
+            { latitude: 39.4621, longitude: -8.1962 },
+            { latitude: 39.4619, longitude: -8.19658 },
+			{ latitude: 39.46181, longitude: -8.19677 },
+            { latitude: 39.46178, longitude: -8.19684 },
+            { latitude: 39.46165, longitude: -8.19704 },
+			{ latitude: 39.4615, longitude: -8.19722 },
+            { latitude: 39.46144, longitude: -8.19731 },
+            { latitude: 39.46151, longitude: -8.19746 },
+			{ latitude: 39.46164, longitude: -8.19774 },
+            { latitude: 39.46175, longitude: -8.19793 },
+            { latitude: 39.46179, longitude: -8.19802 },
+			{ latitude: 39.46156, longitude: -8.19823 },
+            { latitude: 39.46128, longitude: -8.19849 },
+            { latitude: 39.46123, longitude: -8.19856 }
             ]} 
             strokeWidth={10}  
             strokeColor="rgba(0, 0, 139, 0.5)"
             />
             <Polyline coordinates={[
+            { latitude: 39.46256, longitude: -8.19635 },
+            { latitude: 39.46256, longitude: -8.19634 },
 			{ latitude: 39.462591, longitude: -8.196302 },
             { latitude: 39.46261, longitude: -8.19622 },
             { latitude: 39.46262, longitude: -8.19612 },
