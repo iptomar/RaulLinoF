@@ -11,8 +11,8 @@ export const dados = [
             "typology": "Habitação Unifamiliar",
             "info": "Esta habitação, implantada no limite do núcleo histórico de Abrantes, foi provavelmente o primeiro projeto de Raul Lino na cidade de Abrantes. Destinou-se a casa/atelier de José Serra da Motta, advogado e pintor aguarelista. A moradia, insere-se num terreno de acentuado declive, na confluência entre a Rua Luís de Camões e a Rua do Montepio Abrantino, desenvolve-se em dois pisos e inclui sótão. No edifício, destacam-se o alpendre suportado em cinco colunas e orientado a Poente, as trapeiras que asseguram luz natural ao sótão, as duas grandes chaminés decoradas com elementos cerâmicos de barro vermelho semelhantes aos que integram a guarda da escada no alçado posterior da habitação.",
             "imgs": [
-               require("../data/img/itinerario/1/it_011.jpg"),
-               require("../data/img/itinerario/1/it_012.jpg")
+                require("../data/img/itinerario/1/it_011.jpg"),
+                require("../data/img/itinerario/1/it_012.jpg")
             ]
         },
         {
@@ -60,7 +60,7 @@ export const dados = [
             "typology": "Sede de associação cultural e recreativa",
             "info": "O edifício foi projetado para instalar a sede da Sociedade da Assembleia de Abrantes. Está implantado numa zona de acentuado declive, no limite do núcleo histórico da cidade de Abrantes, no cruzamento do Largo General Avelar Machado com a Rua do Montepio Abrantino. Foi inaugurado em 1928 e atualmente mantém-se como propriedade da Sociedade da Assembleia de Abrantes. A entrada principal do edifício no Largo General Avelar Machado está protegida por um alpendre de colunas cilíndricas, onde se destaca o lambril de azulejos policromado. No edifício destacam-se ainda os dois alpendres adjacentes, mas distintos entre si, e orientados a Norte; as rótulas que protegem as janelas das salas na fachada Sul; a cobertura de telha cerâmica e o beiral à portuguesa; os obeliscos de cantaria sobre a cobertura; e as chaminés. No interior, o edifício integra um salão para festas dotado de palco, uma sala de leitura e três salas de jogos, para além da cozinha com copa e das instalações sanitárias. O declive do terreno foi aproveitado para lojas comerciais e armazéns.",
             "imgs": [
-                require("../data/img/itinerario/4/it_041.png"),
+                require( "../data/img/itinerario/4/it_041.png"),
                 require("../data/img/itinerario/4/it_042.jpg"),
                 require("../data/img/itinerario/4/it_043.jpeg")
             ]
