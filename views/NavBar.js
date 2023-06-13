@@ -10,6 +10,8 @@ import BioView from './Bio';
 import MapView from './map/Map';
 import ARView from './ar/AR';
 import ARDetailsView from './ar/ARDetails';
+import HistoryView from './map/History';
+import MarkersView from './map/MarkersIt'; 
 
 // View Names
 const homeName = "Home";
@@ -54,6 +56,16 @@ const ARStack = () => {
   )
 }
 
+const MapStack = () => {
+  return(
+    <Stack.Navigator>
+      <Stack.Screen options={{headerShown: false}} name='Map' component={MapView} />
+      <Stack.Screen options={{headerShown: false}} name='Markers' component={MarkersView} />
+      <Stack.Screen options={{headerShown: false}} name='History' component={HistoryView} />
+    </Stack.Navigator>
+  )
+}
+
 export function NavBar() {
   return (
     <View style={{ flex: 1 }}>
@@ -82,14 +94,14 @@ export function NavBar() {
             )
           }}
         />
-        <Tab.Screen 
-          name="Mapa" 
-          component={MapView} 
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <MapIcon width="50" height="50"/>
-            )
-          }}
+        <Tab.Screen jpg
+        name="Mapa" 
+        component={MapStack} 
+        options={{
+          tabBarIcon: ({focused}) => (
+            <MapIcon width="50" height="50"/>
+          )
+        }}
         />
         <Tab.Screen 
           name="Realidade Aumentada"
