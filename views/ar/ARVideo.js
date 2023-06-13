@@ -1,45 +1,54 @@
 import * as React from 'react';
-import { Platform } from 'react-native';
-import {
-  ViroARScene,
-  ViroText,
-  ViroMaterials,
-  ViroBox,
-  Viro3DObject,
-  ViroAmbientLight,
-  ViroSpotLight,
-  ViroARPlane,
-  ViroARPlaneSelector,
-  ViroQuad,
-  ViroNode,
-  ViroAnimations,
-  ViroConstants
-} from 'react-viro';
 
-import DefaultAndroid from '../../data/obj/default.glb';
-import DefaultIOS from '../../data/obj/default.usdc';
+import { ArViewerView } from "react-native-ar-viewer";
+import { Platform } from 'react-native';
+import RNFS from 'react-native-fs';
+//import DefaultAndroid from '../../data/obj/default.glb';
+//import DefaultIOS from '../../data/obj/default.usdc';
 
 export default function ARVideo({ navigation }) {
 
-    // Substituir no Viro3DObject por um objeto do tipo .obj 
-    return (
-        <>
-          <ViroARScene onTrackingUpdated={this._onTrackingUpdated}>
-            <ViroAmbientLight color="#ffffff"/>
+    const [localModelPath, setLocalModelPath] = React.useState<string>();
+    const [showArView, setShowArView] = React.useState(true);
+    
+    const loadPath = async () => {
+        const modelSrc =
+          Platform.OS === 'android'
+            ? 'https://github.com/riderodd/react-native-ar/blob/main/example/src/dice.glb?raw=true'
+            : 'https://github.com/riderodd/react-native-ar/blob/main/example/src/dice.usdz?raw=true';
+        const modelPath = `${RNFS.DocumentDirectoryPath}/model.${
+          Platform.OS === 'android' ? 'glb' : 'usdz'
+        }`;
+        const exists = await RNFS.exists(modelPath);
+        if (!exists) {
+          await RNFS.downloadFile({
+            fromUrl: modelSrc,
+            toFile: modelPath,
+          }).promise;
+        }
+    
+        setLocalModelPath(modelPath);
+      };
+    
+      React.useEffect(() => {
+        loadPath();
+      });
 
-            <Viro3DObject
-                source={require({DefaultAndroid})}
-                position={[0, .2, 0]}
-                scale={[.2, .2, .2]}
-                type="OBJ"
-                lightReceivingBitMask={3}
-                shadowCastingBitMask={2}
-                transformBehaviors={['billboard']}
-                resources={[require('./res/emoji_smile/emoji_smile_diffuse.png'),
-                          require('./res/emoji_smile/emoji_smile_specular.png'),
-                          require('./res/emoji_smile/emoji_smile_normal.png')]}
-            />
-          </ViroARScene>
-        </>
+    return (
+        <View style={styles.container}>
+            {localModelPath && showArView && (
+                <ArViewerView
+                model={localModelPath}
+                style={styles.arView}
+                disableInstantPlacement
+                manageDepth
+                allowRotate
+                allowScale
+                allowTranslate
+                onStarted={() => console.log('AR Started')}
+                onEnded={() => console.log('AR Ended')}
+                />
+            )}
+        </View>
     );
 }
