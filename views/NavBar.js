@@ -12,6 +12,7 @@ import ARView from './ar/AR';
 import ARDetailsView from './ar/ARDetails';
 import HistoryView from './map/History';
 import MarkersView from './map/MarkersIt'; 
+import Aboutus from './Aboutus';
 
 // View Names
 const homeName = "Home";
@@ -43,6 +44,7 @@ const HomeStack = () => {
     <Stack.Navigator>
       <Stack.Screen options={{headerShown: false}} name='Locais' component={HomeView} />
       <Stack.Screen options={{headerShown: false}} name='Detalhes' component={DetailsView} />
+      <Stack.Screen name="Aboutus" component={Aboutus} options={{headerShown: false}}/>
     </Stack.Navigator>
   )
 }

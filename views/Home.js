@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Image, View, Text, ScrollView, StyleSheet, Button } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
+
 //data from json
 import dados from './itinerarios';
 
@@ -113,7 +114,13 @@ export default function Home({navigation}) {
                     </View> 
                 );
                 })}  
+                <Button style={styles.image}
+                                title='Sobre nós'
+                                color={'#078C6B'}
+                                onPress={() => navigation.navigate('Aboutus')}
+                            />
             </ScrollView>
+            
         </View>
     );
 }
