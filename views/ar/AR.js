@@ -13,6 +13,7 @@ const style = StyleSheet.create({
         paddingTop: 20,
         borderBottomColor: '#FFD683',
         borderBottomWidth: 5,
+        fontSize: 25,
     },
     subtitle: {
         fontSize: 20,
@@ -21,15 +22,16 @@ const style = StyleSheet.create({
     },
     description: {
         maxWidth: '100%',
+        paddingHorizontal: 15,
         fontSize: 16,
-        textAlign: 'left',
         fontFamily: 'FiraSans-Regular',
         color: '#272133',
     },
     image: {
-        width: '80%',
-        height: '100%',
-        marginBottom: 5,
+        width: '95%',
+        height: '95%',
+        marginBottom: 15,
+        marginLeft: 10,
     },
     teste:{
         flexDirection: 'row',
