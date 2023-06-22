@@ -74,6 +74,7 @@ export function NavBar() {
           tabBarShowLabel: false,
           tabBarActiveBackgroundColor: "#ccae35",
           tabBarInactiveBackgroundColor: "white",
+          headerShown: false,
         }}
       >
         <Tab.Screen 
