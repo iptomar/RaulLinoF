@@ -50,7 +50,7 @@ export default function Aboutus({ navigation, route }) {
                             Rodrigo Maia Nº21897
                         </Text>
                         <Text style={styles.subtitle}>
-                            Guilherme Lourenço Nº21897
+                            Guilherme Lourenço Nº23053
                         </Text>
                         <Button title='Voltar' onPress={()=> navigation.navigate('Locais')} color={'#078C6B'}/>
                 </View>
